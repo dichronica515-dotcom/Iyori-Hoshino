@@ -1,0 +1,588 @@
+:root {
+    --bg-color: #fcfafc;
+    /* 純白の聖域 */
+    --panel-bg: rgba(255, 255, 255, 0.85);
+    --accent-silver: #d1d1d6;
+    /* 銀の静寂 */
+    --accent-pink: #f8c3cd;
+    /* 淫らな桜色（レオタード・ピンク） */
+    --accent-lily: #ffffff;
+    /* 百合の純潔 */
+    --accent-purple: #5a2d82;
+    /* マツバの紫（少し和らげた） */
+    --text-color: #3a3a4a;
+    --text-dim: #8e8e93;
+    --glass-border: rgba(248, 195, 205, 0.3);
+    --floral-line: rgba(248, 195, 205, 0.1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Outfit:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Noto Serif JP', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:
+        linear-gradient(rgba(252, 250, 252, 0.8), rgba(252, 250, 252, 0.8)),
+        repeating-linear-gradient(45deg, var(--floral-line) 0, var(--floral-line) 1px, transparent 1px, transparent 100px),
+        repeating-linear-gradient(-45deg, var(--floral-line) 0, var(--floral-line) 1px, transparent 1px, transparent 100px);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('iyori_bg.png');
+    /* イヨリを彷彿とさせる百合と桜の聖域 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+    filter: grayscale(30%) brightness(1.1);
+    z-index: -1;
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWJsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
+    pointer-events: none;
+    z-index: 1000;
+}
+
+header {
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.nav-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.nav-links a:hover {
+    color: var(--accent-pink);
+    border-bottom: 1px solid var(--accent-pink);
+    letter-spacing: 0.35rem;
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    letter-spacing: 0.4rem;
+    color: var(--accent-purple);
+    text-shadow: 2px 2px 10px rgba(248, 195, 205, 0.2);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    color: var(--text-dim);
+}
+
+.subtitle-japanese {
+    font-size: 0.85rem;
+    letter-spacing: 0.4rem;
+    color: var(--accent-pink);
+    margin-top: -0.5rem;
+}
+
+.header-decoration {
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+    margin-top: 1.5rem;
+}
+
+main {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.novel-container {
+    background: var(--panel-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 5rem 4rem;
+    box-shadow: 0 30px 80px rgba(248, 195, 205, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.novel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink), var(--accent-purple));
+    background-size: 200% auto;
+    animation: gradientFlow 10s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.chapter-title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: var(--accent-purple);
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.chapter-title::after {
+    content: '❁';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent-pink);
+    font-size: 1.2rem;
+}
+
+.novel-content {
+    line-height: 2.4;
+    font-size: 1.15rem;
+    text-align: justify;
+    word-break: break-all;
+    color: #444455;
+}
+
+.novel-content p {
+    margin-bottom: 2.5rem;
+    text-indent: 1em;
+}
+
+.novel-content p:first-child {
+    text-indent: 0;
+}
+
+.novel-content p:first-of-type::first-letter {
+    font-size: 4rem;
+    float: left;
+    margin-right: 1rem;
+    color: var(--accent-pink);
+    line-height: 1;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    border: 2px solid var(--accent-pink);
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 5rem 2rem;
+    color: var(--text-dim);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2rem;
+}
+
+.magic-circle {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(248, 195, 205, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ポータルサイト用スタイル */
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.main-visual {
+    height: 400px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.main-visual::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(248, 195, 205, 0.05) 0%, transparent 70%);
+    animation: rotate 80s linear infinite alternate;
+}
+
+.tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.6rem;
+    color: var(--accent-purple);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.summary {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-dim);
+    letter-spacing: 0.1rem;
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.4rem;
+    color: var(--accent-purple);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--accent-pink);
+}
+
+.update-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.update-list li {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(248, 195, 205, 0.15);
+}
+
+.date {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-dim);
+    width: 120px;
+    font-weight: 300;
+}
+
+.category {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid var(--accent-pink);
+    color: var(--accent-pink);
+}
+
+.category.novel {
+    background: var(--accent-pink);
+    color: white;
+}
+
+.update-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.update-list a:hover {
+    color: var(--accent-pink);
+}
+
+.info-content {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 3rem;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-dim);
+}
+
+/* 作品一覧用スタイル */
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.work-item {
+    padding: 3rem;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(248, 195, 205, 0.15);
+    border-color: var(--accent-pink);
+}
+
+.work-status {
+    position: absolute;
+    top: -12px;
+    right: 30px;
+    background: white;
+    color: var(--accent-pink);
+    border: 1px solid var(--accent-pink);
+    font-weight: 400;
+    font-size: 0.7rem;
+    padding: 0.3rem 1.2rem;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.2rem;
+    border-radius: 30px;
+}
+
+.work-status.completed {
+    background: #fdf2f4;
+}
+
+.work-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.work-info h3 a {
+    color: var(--accent-purple);
+    text-decoration: none;
+}
+
+.work-desc {
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+}
+
+/* 花びら（旧雪） */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.snow {
+    position: absolute;
+    background: var(--accent-pink);
+    clip-path: ellipse(40% 50% at 50% 50%);
+    opacity: 0.4;
+    animation: fluttering linear infinite;
+}
+
+@keyframes fluttering {
+    0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0px);
+    }
+
+    33% {
+        transform: translateY(33vh) rotate(120deg) translateX(50px);
+    }
+
+    66% {
+        transform: translateY(66vh) rotate(240deg) translateX(-50px);
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0px);
+    }
+}
+
+.log-divider {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+    margin: 2rem auto;
+    position: relative;
+}
+
+.log-divider::after {
+    content: '❁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    color: var(--accent-pink);
+    background: var(--bg-color);
+    padding: 0 0.5rem;
+}
+
+/* キャラクター紹介用スタイル */
+.character-card {
+    margin-bottom: 3rem;
+}
+
+.char-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.char-role {
+    font-size: 0.7rem;
+    font-family: 'Outfit', sans-serif;
+    color: var(--accent-pink);
+    border: 1px solid var(--accent-pink);
+    padding: 0.2rem 0.8rem;
+    letter-spacing: 0.2rem;
+    border-radius: 20px;
+}
+
+.char-name {
+    font-size: 2rem;
+    color: var(--accent-purple);
+    font-weight: 400;
+}
+
+.char-age {
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 300;
+}
+
+.char-desc {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text-dim);
+}
+
+/* モバイル最適化 */
+@media (max-width: 600px) {
+    header {
+        padding: 3rem 1rem;
+    }
+
+    main {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+
+    .novel-container {
+        padding: 3rem 1.5rem;
+        border-radius: 4px;
+    }
+
+    .novel-content {
+        font-size: 1rem;
+        line-height: 1.9;
+    }
+
+    .novel-content p {
+        margin-bottom: 1.8rem;
+    }
+
+    .novel-content p:first-of-type::first-letter {
+        font-size: 2.5rem;
+        padding: 0.3rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .chapter-title {
+        font-size: 1.4rem;
+    }
+
+    .main-visual {
+        height: 250px;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .work-item {
+        padding: 2rem 1.5rem;
+    }
+
+    .char-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .char-name {
+        font-size: 1.6rem;
+    }
+}

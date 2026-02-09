@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星と花の小夜曲 - マツバ×イヨリ作品集</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">ECHOES OF ECRUTEAK</div>
+        <h1>星と花の小夜曲</h1>
+        <div class="subtitle-japanese">― マツバ × イヨリ ―</div>
+        <div class="subtitle">STARRING MATSUBA & IYORI</div>
+        <nav class="nav-links">
+            <a href="index.html">TOP</a>
+            <a href="character.html">CHARACTER</a>
+            <a href="list.html">ARCHIVE</a>
+        </nav>
+        <div class="header-decoration"></div>
+    </header>
+
+    <main>
+        <article class="novel-container">
+            <h2 class="chapter-title">星屑の調べ：花開く夜の悦楽</h2>
+            <div class="novel-content" id="content">
+                <p>しんしんと降り積もる雪が、古都エンジュの夜を白銀の静寂で塗り潰していた。時折、遠くの寺院から響く鐘の音が、凍てつく空気の層を震わせ、闇を揺らす。マツバの旧宅、その奥座敷。薄暗い行灯の光が、障子越しに差し込む月光と混ざり合い、畳の上に幻想的な陰影を描き出している。
+                </p>
+
+                <p>星埜イヨリは、その静謐な闇の中で、己の指先が刻む微かな震えを、ただ呆然と見つめていた。Lv.24。医師としての知性と、一人の女としての官能が、最も危うい均衡で花開く年齢。彼女の白い肌は、冬の寒さではなく、背後に佇む男が放つ圧倒的な体温と執着によって、じわじわと赤みを帯び始めている。
+                </p>
+
+                <p>「……マ、マツバさん……」</p>
+
+                <p>震える声でその名を呼べば、首筋に熱い吐息が吹きかかった。金色の髪、バンダナを外したその額から漂う、微かな香。マツバの腕が、背後からイヨリの華奢な腰を、逃げ場を塞ぐように強引に引き寄せる。</p>
+
+                <p>「いい子だ、イヨリ。そんなに震えなくていい……僕が、君のすべてを視てあげているんだから」</p>
+
+                <p>千里眼。普段はイヨリのプライバシーを尊重し、決して向けられることのないその眼差しが、今、薄暗い部屋の中で紫色に妖しく光っている。彼の視線は、服を透過し、彼女の血液の巡り、心臓の鼓動、そして——快感に飢えて脈打つ、秘部の奥底までをも、容赦なく暴き立てているのだ。
+                </p>
+
+                <p>イヨリの左目、光を失った白濁の瞳が、悦楽の予感に潤む。彼女の半身とも言える『アステア・システム』の腕輪が、持ち主の急激な心拍数の上昇を検知し、微かな警告音を鳴らそうとするが、マツバの長い指がそのデバイスを優しく、しかし有無を言わせぬ力で押さえ込んだ。
+                </p>
+
+                <p>「ロトム、……今は僕たちの時間だ。少し、静かにしていてくれ」</p>
+
+                <p>『イヨリ、心拍数が異常ロト！ マツバの性ホルモン値が限界突破ロト！ これ以上は教育に悪いロト……！』</p>
+
+                <p>デバイス内のロトムが空気を読まずに叫ぶが、マツバはそれを無視し、イヨリのうなじに深いキスマークを刻み込む。それは、夜の帳の中で獣としての本能を解放した男の、強烈な所有の証明。</p>
+
+                <p>「あ、……っ、ぁっ♡」</p>
+
+                <p>イヨリの口から、清楚なドクターの仮面を剥ぎ取ったような、甘く淫らな喘ぎが零れ落ちる。マツバの指が、彼女の結んでいた黒髪を解き、そのストレートな髪を指に絡める。執着という名の鎖。イヨリは、その重さを、凍えた魂を繋ぎ止める唯一の希望として、狂おしいほどに欲していた。
+                </p>
+
+                <p>物語は、まだ始まったばかり。古都の静寂を切り裂くように、二人の熱気と湿り気を帯びた吐息が、夜を深く、深く塗り替えていく。</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
+    </footer>
+
+    <div class="snow-container"></div>
+    <script>
+        const snowContainer = document.querySelector('.snow-container');
+        const count = 30;
+        for (let i = 0; i < count; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'snow';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.top = Math.random() * -100 + 'vh';
+            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            petal.style.opacity = Math.random() * 0.5 + 0.2;
+            const size = Math.random() * 10 + 5;
+            petal.style.width = size + 'px';
+            petal.style.height = size * 1.5 + 'px';
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            snowContainer.appendChild(petal);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+            document.querySelector('.background-overlay').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+    </script>
+</body>
+
+</html>
