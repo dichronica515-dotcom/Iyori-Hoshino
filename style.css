@@ -525,6 +525,34 @@ footer {
     color: var(--text-dim);
 }
 
+.dic-link {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.dic-link:hover {
+    color: var(--accent-pink);
+    text-shadow: 0 0 15px rgba(248, 195, 205, 0.6);
+}
+
+.dic-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-pink);
+    transition: width 0.3s ease;
+}
+
+.dic-link:hover::after {
+    width: 100%;
+}
+
 /* モバイル最適化 */
 @media (max-width: 600px) {
     header {

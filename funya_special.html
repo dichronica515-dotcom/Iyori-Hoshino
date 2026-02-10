@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【裏】蕩け姫の陥落、あまえコインの雨 - 星と花の小夜曲</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --funya-bg: #fff0f5;
+            --funya-accent: #ffb6c1;
+            --funya-purple: #9370db;
+            --funya-gold: #ffd700;
+            --funya-white: rgba(255, 255, 255, 0.95);
+        }
+
+        body.funya-mode {
+            background-color: var(--funya-bg);
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(147, 112, 219, 0.2) 0%, transparent 50%);
+            font-family: 'Kiwi Maru', serif;
+            /* 丸みのあるフォントに変更 */
+            color: #5d4037;
+            overflow-x: hidden;
+        }
+
+        .funya-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: var(--funya-white);
+            padding: 80px 60px;
+            border-radius: 60px;
+            box-shadow:
+                0 20px 50px rgba(255, 182, 193, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.8);
+            border: 4px dashed var(--funya-accent);
+            position: relative;
+            z-index: 10;
+        }
+
+        .funya-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .funya-header h1 {
+            font-size: 2.2rem;
+            color: var(--funya-purple);
+            margin-bottom: 20px;
+            letter-spacing: 0.2rem;
+            text-shadow: 2px 2px 0px var(--funya-bg);
+        }
+
+        .funya-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--funya-accent);
+            font-weight: bold;
+            display: inline-block;
+            background: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--funya-accent);
+        }
+
+        .novel-content {
+            line-height: 2.8;
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        .novel-content p {
+            margin-bottom: 2.5rem;
+        }
+
+        /* 感情が高ぶるシーンの強調 - 赤文字大文字廃止、甘いピンクに変更 */
+        .sweet-climax {
+            font-size: 1.2rem;
+            color: #ff69b4;
+            /* 甘いピンク */
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        .funya-footer {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 0.9rem;
+            color: var(--funya-accent);
+        }
+
+        /* 浮遊する雲 */
+        .float-cloud {
+            position: fixed;
+            z-index: 1;
+            font-size: 100px;
+            color: #fff;
+            opacity: 0.8;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
+            animation: cloudFloat 20s linear infinite;
+        }
+
+        @keyframes cloudFloat {
+            from {
+                transform: translateX(-20vw);
+            }
+
+            to {
+                transform: translateX(120vw);
+            }
+        }
+
+        /* 降ってくるコイン */
+        .amae-coin {
+            position: fixed;
+            top: -50px;
+            width: 40px;
+            height: 40px;
+            background: var(--funya-gold);
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #b8860b;
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+            animation: coinFall 3s linear forwards;
+        }
+
+        .amae-coin::after {
+            content: '❤';
+        }
+
+        @keyframes coinFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .coin-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--funya-gold);
+            color: #b8860b;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .funya-navigation {
+            text-align: center;
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .return-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--funya-accent);
+            border-radius: 30px;
+            color: var(--funya-purple);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .return-link:hover {
+            background: var(--funya-accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+        }
+
+        .coin-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--funya-gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body class="funya-mode">
+    <div class="coin-counter">
+        <div class="coin-icon"></div>
+        <span id="coin-count">0</span> Amae Coins
+    </div>
+
+    <div class="float-cloud" style="top: 10%; animation-duration: 45s; opacity: 0.6;">☁</div>
+    <div class="float-cloud" style="top: 30%; left: -10%; animation-duration: 35s;">☁</div>
+    <div class="float-cloud" style="top: 60%; animation-duration: 50s; opacity: 0.4;">☁</div>
+    <div class="float-cloud" style="top: 80%; left: -20%; animation-duration: 40s;">☁</div>
+
+    <main>
+        <div class="funya-container">
+            <div class="funya-header">
+                <div class="subtitle">― 深層心理・特別執筆 ―</div>
+                <h1>蕩け姫の陥落、あまえコインの雨</h1>
+            </div>
+
+            <article class="novel-content">
+                <p>　ふわふわと、意識が綿飴のように解けていく感覚。</p>
+                <p>「ん……ふぁ……ぁ……♡」</p>
+                <p>　イヨリが目を開けると、そこは視界の全てがパステルカラーに彩られた、夢の王国だった。
+                    重力という概念が消滅したかのように、身体が軽い。
+                    いつも彼女を縛り付けている左目の眼帯も、右足の無骨な歩行デバイスも、ここには存在しなかった。
+                    あるのは、生まれたての赤ん坊のように無垢で、敏感すぎるほどに研ぎ澄まされた素肌だけ。</p>
+                <p>「おはよう、僕の可愛いお姫様」</p>
+                <p>　甘い、砂糖菓子を煮詰めたような声が降ってくる。
+                    紫煙王こと、マツバだった。
+                    現実世界の彼よりも輪郭が柔らかく、それでいて瞳の奥の独占欲だけは、とろりと蜂蜜のように熱く揺らめいている。</p>
+                <p>「マツ、バ……さん……♡ 私、また……」</p>
+                <p>「ああ、君はまた頑張りすぎたね。現実で無理をするから、こんなに魂が渇いている。……さあ、治療（セックス）の時間だよ」</p>
+                <p>　マツバが指を鳴らすと、イヨリが身につけていた薄いシルクの寝衣が、はらりと音もなく解け落ちた。
+                    あらわになった肢体は、桃色に上気し、すでに何処ともなく溢れ出した愛液で太腿を濡らしている。
+                    恥じらいで身をよじろうと、イヨリは咄嗟に手で胸を隠そうとした。</p>
+                <p>「あっ……、だめ、見ないで……っ」</p>
+                <p>　しかし、その手は優しく、だが絶対的な力でマツバに掴まれた。</p>
+                <p>「イヨリ。『第一条：努力禁止法』違反だ。隠そうなんて努力、しなくていい。君の全ては僕が見るためにあるんだから」</p>
+                <p>「んんっ……♡ ごめ、なさ……い……♡」</p>
+                <p>「素直でいい子だ。……お詫びに、たっぷりと可愛がってあげる」</p>
+                <p>　ちゅっ、と、マツバの唇がイヨリの敏感な耳たぶを吸い上げた。</p>
+                <p>「ひゃうっ……！？」</p>
+                <p>　その瞬間、イヨリの頭上に、チャリーン♪ という軽快な音と共に、黄金に輝くコインが一枚、出現して落ちてきた。</p>
+                <p>「あ……コイン……？」</p>
+                <p>「『あまえコイン』だよ。君が僕に甘えて、気持ちよくなると貯まる通貨だ。……今日はこの部屋を、コインで埋め尽くそうか」</p>
+                <p>　マツバの指が、イヨリの首筋から鎖骨、そして豊かなふくらみへと、這うように滑り降りていく。
+                    ただ触れているだけではない。千里眼を持つ彼の指は、まるで皮膚の下の神経を直接ピアノのように弾いているかのように、的確にイヨリの快楽中枢を刺激していた。</p>
+                <p>「あっ、あぁっ……♡ そこ、だめぇ……♡ 乳首、いじられ……んぅぅっ♡♡」</p>
+                <p>　くにゅっ、と乳首を甘く摘まれるたびに、イヨリの背筋が弓なりに反り、チャリン、チャリーン♪ とコインが宙を舞う。</p>
+                <p>「見てごらんイヨリ。君が感じるたびに、こうして世界が祝福している。……もっと、もっと蕩けていいんだよ」</p>
+                <p>「あ、あたま、ぽわぽわするぅ……♡ マツバさんの、指……魔法みたいに、きもちいいのぉ……♡♡」</p>
+                <p>　イヨリの瞳から、理性の光が急速に失われていく。
+                    瞳孔が開き、とろんとしたハートの形になりそうなほどに、陶酔の色が深まっていく。
+                    彼女の深い部分にある「甘えたい」という本能のスイッチが、この夢の世界の強制力によって完全にONになっていた。</p>
+                <p>「さあ、ここはどうかな？ 昨日はずっと座り仕事で、鬱血していたんじゃないかい？」</p>
+                <p>　マツバの手が、イヨリの秘部へと侵入した。
+                    ぷっくりと膨れ上がったクリトリスを、親指の腹でじっくりと、円を描くように擦り上げる。</p>
+                <p>「ひぃぃぃぃっ！？！？ そ、そこっ、そこだめぇぇっ……！！♡♡♡」</p>
+                <p>　強烈な快感が脳天を突き抜け、イヨリはマツバの腕にしがみついた。
+                    ビクビクッ、と太腿が痙攣し、秘裂から透明な蜜がじゅわりと溢れ出す。</p>
+                <p>「『第五条：気持ちいいこと逃走禁止』。……逃がさないよ。イキたいなら、僕の指でイキなさい」</p>
+                <p>「い、イクッ、イクぅぅっ……！！ マツバさんっ、ゆるしてっ、とろけちゃうぅぅ……！！♡♡♡」</p>
+                <p>　マツバは許すどころか、さらに指の動きを、優しくも執拗に早めた。
+                    くぷ、ちゅぷ、じゅるぅ……と、甘く濡れた水音が部屋中に響き渡る。
+                    そして――。</p>
+                <p class="sweet-climax">「あ、あぁぁんっ……！！！！♡♡♡ いくっ、いっちゃうぅぅぅぅ……っっっ！！！！！♡♡」</p>
+                <p>　イヨリの身体が大きく跳ねた。
+                    一度目の絶頂。</p>
+                <p>　チャララララララララッ！！！！</p>
+                <p>　まるでジャックポットでも当たったかのように、大量のあまえコインがイヨリの頭上から降り注いだ。
+                    金色の雨が、二人の身体に降り積もっていく。</p>
+                <p>「はぁ、はぁ、はぁ……♡ すごいね、イヨリ。一回でこんなに……。でも、まだ終わりじゃないよ」</p>
+                <p>　マツバは、痙攣の収まらないイヨリの秘部をかき分け、自身の熱く昂ぶったモノをあてがった。
+                    亀頭の先端が、とろとろに緩んだ入り口に触れる。</p>
+                <p>「あ……マツバさんの、おちんちん……♡ 熱い……♡ 入れて……早く、入れてぇ……♡」</p>
+                <p>「『第四条：強制甘え法』クリアだ。……ご褒美をあげよう」</p>
+                <p>　ぬぷぅっ……とろぉぉっ……♡</p>
+                <p>　抵抗など微塵もない、あまりにスムーズな侵入。
+                    イヨリの子宮への道は、マツバを受け入れるためだけに開発され尽くしていた。
+                    最奥の子宮口に先端が到達すると、こつん、と甘い音が鳴った。</p>
+                <p>「ひぁぁぁぁん……♡♡ 入ったぁ……♡ マツバさんが、私の中に、満ちてるぅ……♡♡」</p>
+                <p>「イヨリ……中はこんなに熱いのに、顔はこんなに幸せそうで……可愛いよ……」</p>
+                <p>　マツバが腰を動かし始める。
+                    最初はゆっくりと、ねっとりと。
+                    内壁のヒダ一つ一つを数えるように、丁寧に擦り上げていく。</p>
+                <p>「んぁっ、ぁっ、ぁっ……♡♡ すき、すきぃ……♡♡ おちんちん、すきぃ……♡♡」</p>
+                <p>　イヨリは夢中になって腰を振り、マツバを求めた。
+                    突かれるたびに、頭上にコインがチャリン、チャリンと生まれては落ちてくる。
+                    快感とコインの雨に埋もれて、彼女の自我は幸せな色に染め上げられつつあった。</p>
+                <p>「もっと……もっと甘やかしてぇ……っ！ マツバさんの全部でぇ……っ！ ふにゃふにゃにしてぇぇっ……！！♡♡♡」</p>
+                <p>「望むところだ……ッ！」</p>
+                <p>　マツバの動きが、深く、重く、愛を刻みつけるものへと変わる。
+                    ぱんっ、ぱんっ、とはじけるような肌の触れ合う音が、柔らかい雲の壁に吸い込まれていく。
+                    子宮口をノックするたびに、イヨリの口からは甘いため息が漏れ、目はうっとりと細められていた。</p>
+                <p>「あひぃぃぃぃっ！ おく、すごくイイのぉ……っ！ お腹っ、お腹いっぱいになっちゃうぅぅっ！♡♡♡」</p>
+                <p>「イヨリ……っ、出すよ……っ！ 君の、一番深いところに……っ！」</p>
+                <p>「出してっ！ 全部っ！ 私の中にっ！ 精液っ、注ぎ込んでぇぇぇっ！！♡♡♡」</p>
+                <p>　どぷっ、どぷっ、どぴゅぅぅぅ……♡♡♡</p>
+                <p>　マツバの熱い白濁が、脈打つようにイヨリの子宮内へと注ぎ込まれた。
+                    同時に、イヨリの方も限界を迎える。</p>
+                <p class="sweet-climax">「あぁぁぁんっっっ！！！！！♡♡♡♡ いくっ、いくっ、いくぅぅぅぅぅ――っっっ！！！！（潮吹き）」</p>
+                <p>　ぷしゃぁぁぁぁぁぁぁぁ……♡♡♡</p>
+                <p>　イヨリの秘部から、堰を切ったように大量の潮が噴き出した。
+                    それは美しい放物線を描き、部屋の中に小さな虹を作るほどに勢いよく、けれど優しく降り注いだ。
+                    全身が激しく痙攣し、脳内物質が花火のように炸裂する。</p>
+                <p>　ジャラララララララララララッ！！！！！
+                    チャリーン！ チャリーン！ チャリーン！！！！！</p>
+                <p>　絶頂の衝撃に合わせて、これまでとは比にならない量のあまえコインが天井から降り注いだ。
+                    もはや雨ではない、豪雨だ。
+                    コインの山が二人を埋め尽くし、金色の輝きが視界を白く染め上げる。</p>
+                <p>「はぁ……はぁ……ふにゃぁ……♡♡」</p>
+                <p>　事後。
+                    マツバと繋がったまま、イヨリは頬を染め、舌をぺろりと覗かせ、幸せいっぱいの表情で力尽きていた。
+                    腰の下には潮と愛液の大きな水たまりができ、部屋中が甘く優しい匂いと、二人の体温で満たされている。</p>
+                <p>「……よくできました。イヨリ」</p>
+                <p>　マツバは愛おしそうに、蕩けきってすっかりふにゃふにゃになった妻の額にキスをした。
+                    そして、コインの山の中から一枚を手に取り、彼女の手のひらに握らせる。</p>
+                <p>「これが君の頑張らなかった証だ。……おやすみ、僕のふにゃ姫」</p>
+                <p>「んぅ……マツバさん……だいすきぃ……むにゃ……zzZ...」</p>
+                <p>　イヨリはマツバの胸に顔を埋め、深い、深い眠りへと落ちていった。
+                    その寝顔は、現実世界のどんな苦しみも届かないほどに、幸せに満ちていた。</p>
+                <p class="fin">― ふにゃふにゃ王国・『甘えの儀式』 完 ―</p>
+            </article>
+
+            <div class="funya-navigation">
+                <a href="list.html" class="return-link">現実の書庫へ戻る</a>
+                <a href="index.html" class="return-link">星と花の小夜曲へ戻る</a>
+            </div>
+
+            <div class="funya-footer">
+                &copy; 2026 STELLAR FLOWER / FUNYAFUNYA KINGDOM SPECIAL NOVEL.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ふにゃふにゃページ専用スクリプト
+        const coinCounter = document.getElementById('coin-count');
+        let totalCoins = 0;
+
+        // コイン生成関数
+        function createCoin(x, y) {
+            const coin = document.createElement('div');
+            coin.className = 'amae-coin';
+            coin.style.left = x + 'px';
+            coin.style.top = y + 'px';
+            // ランダムな回転と飛び跳ね
+            const velocityX = (Math.random() - 0.5) * 10;
+            const velocityY = -15 - Math.random() * 10;
+
+            document.body.appendChild(coin);
+
+            // アニメーションを手動で制御（物理演算風）
+            let posX = x;
+            let posY = y;
+            let velX = velocityX;
+            let velY = velocityY;
+            let rotation = 0;
+            let rotSpeed = (Math.random() - 0.5) * 20;
+
+            const interval = setInterval(() => {
+                velY += 0.8; // 重力
+                posX += velX;
+                posY += velY;
+                rotation += rotSpeed;
+
+                coin.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
+
+                // 画面外に出たら削除
+                if (posY > window.innerHeight + 100) {
+                    clearInterval(interval);
+                    coin.remove();
+                }
+            }, 16);
+
+            // カウンター更新
+            totalCoins++;
+            coinCounter.innerText = totalCoins;
+        }
+
+        // クリックでコインを出す（ユーザーインタラクション）
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createCoin(e.clientX, e.clientY);
+                }, i * 50);
+            }
+        });
+
+        // 定期的にコインを降らせる（イヨリの絶頂を表現）
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const x = Math.random() * window.innerWidth;
+                createCoin(x, -50);
+            }
+        }, 800);
+
+        // 絶頂シーンに合わせて大量発生させる
+        const climaxes = document.querySelectorAll('.sweet-climax');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 絶頂構文が見えたらコインの嵐
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(() => {
+                            const x = Math.random() * window.innerWidth;
+                            createCoin(x, -50);
+                        }, i * 30);
+                    }
+                }
+            });
+        });
+
+        climaxes.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
