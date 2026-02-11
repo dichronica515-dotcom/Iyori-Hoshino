@@ -29,6 +29,7 @@
             font-size: 24px;
             margin: 0;
             color: #333;
+            text-align: left;
         }
 
         .pixiv-header .ruby {
@@ -43,11 +44,6 @@
             border: 1px solid #ddd;
             margin-left: 20px;
             background: #f9f9f9;
-        }
-
-        .infobox img {
-            width: 100%;
-            height: auto;
         }
 
         .infobox table {
@@ -75,11 +71,13 @@
             margin-top: 30px;
             background: #f4f4f4;
             line-height: 2;
+            text-align: left;
         }
 
         .content-body p {
-            line-height: 1.8;
-            margin-bottom: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 1.2em;
+            text-align: left;
         }
 
         .pixiv-nav {
@@ -87,15 +85,12 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 14px;
+            text-align: left;
         }
 
         .pixiv-nav a {
             color: #0096fa;
             text-decoration: none;
-        }
-
-        .pixiv-nav a:hover {
-            text-decoration: underline;
         }
 
         .tag-list {
@@ -104,6 +99,7 @@
             padding-top: 10px;
             font-size: 12px;
             color: #666;
+            text-align: left;
         }
 
         .tag-list span {
@@ -114,14 +110,34 @@
             border-radius: 2px;
         }
 
-        /* Override global styles for this page */
         body {
             background: #f0f2f5 !important;
         }
 
-        .novel-container {
-            background: transparent !important;
-            box-shadow: none !important;
+        @media (max-width: 600px) {
+            .pixiv-container {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .infobox {
+                float: none;
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            .pixiv-header h1 {
+                font-size: 20px;
+            }
+
+            .content-body h2 {
+                font-size: 18px;
+            }
+
+            .content-body p {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -129,9 +145,9 @@
 <body>
     <div class="background-overlay" style="opacity: 0.1;"></div>
 
-    <header style="background: #0096fa; padding: 10px 0;">
-        <div class="subtitle" style="color: #fff;">pikishibu - 創作文化の百科事典</div>
-        <nav class="nav-links">
+    <header style="background: #0096fa; padding: 2rem 1rem;">
+        <div class="subtitle" style="color: #fff; text-align: left;">pikishibu - 創作文化の百科事典</div>
+        <nav class="nav-links" style="justify-content: flex-start;">
             <a href="index.html" style="color: #fff;">TOP</a>
             <a href="character.html" style="color: #fff;">CHARACTER</a>
             <a href="list.html" style="color: #fff;">ARCHIVE</a>
@@ -139,7 +155,7 @@
         </nav>
     </header>
 
-    <main class="novel-container">
+    <main>
         <div class="pixiv-container">
             <div class="pixiv-header">
                 <div class="ruby">ほしのいより</div>
@@ -164,10 +180,6 @@
                         <td>24歳</td>
                     </tr>
                     <tr>
-                        <th>出身地</th>
-                        <td>ホウエン地方 ミナモシティ</td>
-                    </tr>
-                    <tr>
                         <th>職業</th>
                         <td>ポケモンドクター</td>
                     </tr>
@@ -190,40 +202,28 @@
                 <h2>概要</h2>
                 <p>
                     ホウエン地方のミナモシティからエンジュシティへと赴任してきたポケモンドクター。清潔感のある白衣を身に纏い、常に穏やかな微笑みを絶やさない。
-                    しかし、その淑やかな外見とは裏腹に、彼女の霊基（キャラクター造形）には極めて過激で退廃的な設定が詰め込まれている。
                 </p>
                 <p>
-                    過去のある事故により、左目の視機能と右足の自由を失っており、現在はロトムが組み込まれた歩行補助デバイス『アステア・システム』を使用して生活している。この身体的欠損と、それによる「支配されることへの無意識の欲求」が、彼女のキャラクター性の核心となっている。
+                    過去の事故により左目の視機能と右足の自由を失っており、歩行補助デバイスを使用して生活している。この身体的欠損が、彼女のキャラクター性の核心となっている。
                 </p>
 
                 <h2>人物・性格</h2>
                 <p>
-                    基本的に真面目で献身的な性格で、医師としての腕は確か。しかし、夫であるマツバに対しては異常なまでの執着と服従心を見せる。
-                    彼女には重度の「性依存」という隠された特性があり、特にマツバの千里眼によって自分の内面や痴態を暴かれることに、抗いがたい悦楽を感じてしまう。
+                    献身的な性格で医師としての腕は確か。夫であるマツバに対しては異常なまでの執着を見せる。「すべてを視通されている」という状況に悦楽を感じる重度の「性依存」という側面を持つ。
                 </p>
                 <p>
-                    普段の理知的で冷静な態度が、夜の営みにおいてマツバに蹂躙されることで崩壊していく様子は、ファンの間（佐藤美咲先生の薄い本）で「とろとろイヨリちゃん」「論破された後の蕩解」などと称され、高い人気を博している。特に絶頂の果てに到達する深層心理の理想郷「<a
-                        href="funya_kingdom.html">ふにゃふにゃ王国</a>」の設定は、彼女の隠れた甘え願望を象徴するものとして語り草となっている。
+                    理知的な態度が崩壊していく様子は高い人気を博しており、絶頂の果てに到達する深層心理の理想郷「<a
+                        href="funya_kingdom.html">ふにゃふにゃ王国</a>」の設定は語り草となっている。
                 </p>
 
-                <h2>マツバとの関係</h2>
-                <p>
-                    エンジュシティのジムリーダー・マツバの妻。マツバの千里眼は、彼女の衣服の下のみならず、子宮の活動や脳内に渦巻く淫らな思考までをも捉える。イヨリ自身、マツバに「すべてを視通されている」という状況に呪縛されており、彼なしでは生きられない体になっている。
-                </p>
-                <p>
-                    夫婦仲は極めて良好（という名の共依存）であり、マツバの独占欲を全身で受け止めることが彼女の最大の幸福である。
-                </p>
-
-                <h2>関連タグ</h2>
                 <div class="tag-list">
-                    <span>星と花の小夜曲</span> <span>マツバ</span> <span>イヨリ</span> <span>ポケモンドクター</span> <span>白衣</span>
-                    <span>共依存</span> <span>R-18</span> <span>佐藤美咲作品</span>
+                    <span>星と花の小夜曲</span> <span>マツバ</span> <span>イヨリ</span> <span>ポケモンドクター</span> <span>R-18</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
+    <footer style="text-align: left; padding: 2rem 1rem;">
         &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
     </footer>
 </body>

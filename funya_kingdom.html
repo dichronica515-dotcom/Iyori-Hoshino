@@ -29,6 +29,7 @@
             font-size: 24px;
             margin: 0;
             color: #333;
+            text-align: left;
         }
 
         .pixiv-header .ruby {
@@ -70,6 +71,7 @@
             margin-top: 30px;
             background: #f4f4f4;
             line-height: 2;
+            text-align: left;
         }
 
         .content-body h3 {
@@ -78,11 +80,13 @@
             margin-top: 20px;
             padding-bottom: 5px;
             color: #0096fa;
+            text-align: left;
         }
 
         .content-body p {
-            line-height: 1.8;
-            margin-bottom: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 1.2em;
+            text-align: left;
         }
 
         .pixiv-nav {
@@ -90,6 +94,7 @@
             padding: 10px;
             margin-bottom: 20px;
             font-size: 14px;
+            text-align: left;
         }
 
         .pixiv-nav a {
@@ -103,6 +108,7 @@
             padding-top: 10px;
             font-size: 12px;
             color: #666;
+            text-align: left;
         }
 
         .tag-list span {
@@ -117,11 +123,6 @@
             background: #f0f2f5 !important;
         }
 
-        .novel-container {
-            background: transparent !important;
-            box-shadow: none !important;
-        }
-
         .law-item {
             border-left: 3px solid #ffcc00;
             padding-left: 15px;
@@ -129,11 +130,38 @@
             background: #fffdf0;
             padding-top: 5px;
             padding-bottom: 5px;
+            text-align: left;
         }
 
         .law-title {
             font-weight: bold;
             color: #d4a017;
+        }
+
+        @media (max-width: 600px) {
+            .pixiv-container {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .infobox {
+                float: none;
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            .pixiv-header h1 {
+                font-size: 20px;
+            }
+
+            .content-body h2 {
+                font-size: 18px;
+            }
+
+            .content-body p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -141,9 +169,9 @@
 <body>
     <div class="background-overlay" style="opacity: 0.1;"></div>
 
-    <header style="background: #0096fa; padding: 10px 0;">
-        <div class="subtitle" style="color: #fff;">pikishibu - 創作文化の百科事典</div>
-        <nav class="nav-links">
+    <header style="background: #0096fa; padding: 2rem 1rem;">
+        <div class="subtitle" style="color: #fff; text-align: left;">pikishibu - 創作文化の百科事典</div>
+        <nav class="nav-links" style="justify-content: flex-start;">
             <a href="index.html" style="color: #fff;">TOP</a>
             <a href="character.html" style="color: #fff;">CHARACTER</a>
             <a href="list.html" style="color: #fff;">ARCHIVE</a>
@@ -151,7 +179,7 @@
         </nav>
     </header>
 
-    <main class="novel-container">
+    <main>
         <div class="pixiv-container">
             <div class="pixiv-header">
                 <div class="ruby">ふにゃふにゃおうこく</div>
@@ -196,27 +224,12 @@
 
             <div class="content-body">
                 <p>
-                    <strong>ふにゃふにゃ王国</strong>とは、二次創作企画『星と花の小夜曲』において、ヒロインである<a
-                        href="iyori_dic.html">星埜イヨリ</a>の深層心理に存在するとされる精神世界、および理想郷の名称である。
+                    <strong>ふにゃふにゃ王国</strong>とは、二次創作企画『星と花の小夜曲』において、ヒロインである星埜イヨリの深層心理に存在するとされる精神世界、および理想郷の名称である。
                 </p>
 
                 <h2>概要</h2>
                 <p>
-                    現実世界で責任感が強く、自己犠牲的に生きるイヨリの心が無意識に創り出した、究極の安息地。彼女の「守られたい」「甘えたい」という本能的欲求が具現化した世界であり、マツバとの性行為後に絶頂を繰り返し、意識が朦朧とした「ふにゃイヨ」状態の時にのみ到達可能とされる。
-                </p>
-                <p>
-                    重力は現実の1/10で、全土が綿菓子のような雲で構成されている。年中春のような心地よい気温（約22度）に保たれ、常にマツバの匂いがする甘い風が吹いている。
-                </p>
-
-                <h2>国家の構成</h2>
-                <h3>ふにゃ姫（イヨリ）</h3>
-                <p>
-                    この国の唯一の王女であり主人公。現実のデバイスや傷跡が一切ない「完全体」の姿をしており、常に薄い寝衣のみを纏っている。
-                    「努力・我慢・自己犠牲」を一切禁じられており、ただマツバに愛されるためだけに存在する。
-                </p>
-                <h3>紫煙王（マツバ）</h3>
-                <p>
-                    この国の王であり、ふにゃ姫の永遠の愛人。現実よりも10倍優しい表情を浮かべ、24時間365日姫を愛で満たす。姫が「頑張りすぎ」るのを阻止するのが主な役割。
+                    現実世界で責任感が強く、自己犠牲的に生きるイヨリの心が無意識に創り出した、究極の安息地。意識が朦朧とした「ふにゃイヨ」状態の時にのみ到達可能。
                 </p>
 
                 <h2>ふにゃ十ヶ条（抜粋）</h2>
@@ -225,32 +238,23 @@
                     <p>ふにゃ姫は一切の努力をしてはならない。頑張ろうとするとマツバに抱きしめられる刑に処される。</p>
                 </div>
                 <div class="law-item">
-                    <div class="law-title">第三条：自己犠牲禁止法</div>
-                    <p>誰かのために自分を犠牲にすることを禁ず。違反者は「永遠の膝枕刑」に処される。</p>
-                </div>
-                <div class="law-item">
                     <div class="law-title">第五条：気持ちいいこと逃走禁止法</div>
                     <p>快楽から逃げてはならない。イきたい時にイき、潮を吹きたい時に吹くのが姫の「義務」である。</p>
                 </div>
 
-                <h2>地理・建造物</h2>
+                <h2>地理</h2>
                 <ul>
-                    <li><strong>紫煙の城：</strong>中央にあるマツバの居城。「蕩け風呂」や「甘えの間」を完備。</li>
-                    <li><strong>蕩け湖：</strong>浸かるだけで全身の力が抜ける温かい湖。潮吹きの水でできているという伝説がある。</li>
-                    <li><strong>紫煙の褥：</strong>王城の最深部、姫が蕩け尽くすための場所。その行為の記録は『<a href="funya_special.html"
-                            style="color: inherit; text-decoration: none;">こちら</a>』から閲覧可能。</li>
+                    <li><strong>紫煙の褥：</strong>王城の最深部、姫が蕩け尽くすための場所。記録は『<a href="funya_special.html">こちら</a>』より。</li>
                 </ul>
 
-                <h2>関連タグ</h2>
                 <div class="tag-list">
-                    <span>星と花の小夜曲</span> <span>星埜イヨリ</span> <span>マツバ</span> <span>深層心理</span> <span>理想郷</span>
-                    <span>中出し</span> <span>潮吹き</span> <span>佐藤美咲設定</span>
+                    <span>星と花の小夜曲</span> <span>星埜イヨリ</span> <span>マツバ</span> <span>深層心理</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
+    <footer style="text-align: left; padding: 2rem 1rem;">
         &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
     </footer>
 </body>
