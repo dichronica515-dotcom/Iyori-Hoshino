@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甘え上手のふにゃ姫 - ふにゃふにゃ王国特別編</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --funya-bg: #fff0f5;
+            --funya-accent: #ffb6c1;
+            --funya-purple: #9370db;
+            --funya-gold: #ffd700;
+            --funya-white: rgba(255, 255, 255, 0.95);
+        }
+
+        body.funya-mode {
+            background-color: var(--funya-bg);
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(147, 112, 219, 0.2) 0%, transparent 50%);
+            font-family: 'Kiwi Maru', serif;
+            color: #5d4037;
+            overflow-x: hidden;
+        }
+
+        .funya-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: var(--funya-white);
+            padding: 80px 60px;
+            border-radius: 60px;
+            box-shadow:
+                0 20px 50px rgba(255, 182, 193, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.8);
+            border: 4px dashed var(--funya-accent);
+            position: relative;
+            z-index: 10;
+        }
+
+        .funya-header {
+            text-align: left;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .funya-header h1 {
+            font-size: 2.5rem;
+            color: var(--funya-purple);
+            margin-bottom: 20px;
+            letter-spacing: 0.2rem;
+            text-shadow: 2px 2px 0px var(--funya-bg);
+            line-height: 1.4;
+        }
+
+        .funya-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--funya-accent);
+            font-weight: bold;
+            display: inline-block;
+            background: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--funya-accent);
+        }
+
+        .novel-content {
+            line-height: 2.0;
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        .novel-content p {
+            margin-bottom: 1.8rem;
+            text-indent: 1em;
+        }
+
+        .sweet-climax {
+            font-size: 1.3rem;
+            color: #ff69b4;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
+            margin: 3rem 0;
+            text-align: center;
+            text-indent: 0 !important;
+        }
+
+        .funya-footer {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 0.9rem;
+            color: var(--funya-accent);
+            border-top: 2px dashed var(--funya-accent);
+            padding-top: 30px;
+        }
+
+        .float-cloud {
+            position: fixed;
+            z-index: 1;
+            font-size: 100px;
+            color: #fff;
+            opacity: 0.8;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
+            animation: cloudFloat 20s linear infinite;
+        }
+
+        @keyframes cloudFloat {
+            from {
+                transform: translateX(-20vw);
+            }
+
+            to {
+                transform: translateX(120vw);
+            }
+        }
+
+        .amae-coin {
+            position: fixed;
+            top: -50px;
+            width: 40px;
+            height: 40px;
+            background: var(--funya-gold);
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #b8860b;
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+            animation: coinFall 3s linear forwards;
+        }
+
+        .amae-coin::after {
+            content: '❤';
+        }
+
+        @keyframes coinFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .coin-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--funya-gold);
+            color: #b8860b;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coin-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--funya-gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .fin {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--funya-purple);
+            margin-top: 4rem;
+            font-weight: bold;
+        }
+
+        .afterword {
+            margin-top: 4rem;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--funya-purple);
+        }
+
+        .afterword-title {
+            font-size: 1.2rem;
+            color: var(--funya-purple);
+            border-bottom: 2px dashed var(--funya-purple);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .funya-navigation {
+            text-align: center;
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .return-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--funya-accent);
+            border-radius: 30px;
+            color: var(--funya-purple);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .return-link:hover {
+            background: var(--funya-accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .funya-container {
+                padding: 40px 20px;
+                margin: 20px 10px;
+                border-radius: 30px;
+            }
+
+            .funya-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .novel-content {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .sweet-climax {
+                font-size: 1.1rem;
+            }
+
+            .funya-navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="funya-mode">
+    <div class="coin-counter">
+        <div class="coin-icon"></div>
+        <span id="coin-count">0</span> Amae Coins
+    </div>
+
+    <div class="float-cloud" style="top: 10%; animation-duration: 45s; opacity: 0.6;">☁</div>
+    <div class="float-cloud" style="top: 30%; left: -10%; animation-duration: 35s;">☁</div>
+    <div class="float-cloud" style="top: 60%; animation-duration: 50s; opacity: 0.4;">☁</div>
+    <div class="float-cloud" style="top: 80%; left: -20%; animation-duration: 40s;">☁</div>
+
+    <main>
+        <div class="funya-container">
+            <div class="funya-header">
+                <div class="subtitle">― 祝・逃げ若完結記念パロディ ―</div>
+                <h1>甘え上手のふにゃ姫</h1>
+                <div class="subtitle">THE ELUSIVE...? NO, THE SPOILED PRINCESS</div>
+            </div>
+
+            <article class="novel-content">
+                <p>時は令和八年。場所は現代の古都、エンジュシティ。</p>
+                <p>かつて乱世で「逃げる」ことによって英雄となった少年がいたように、ここ現代においては「甘える」ことによって英雄（ヒロイン）となる少女がいた。</p>
+                <p>その名は、イヨリ。</p>
+                <p>普段はエンジュジム専属のポケモンドクターとして、冷静沈着かつ聡明に振る舞う彼女だが、ひとたび最愛の夫・マツバの腕の中という「安全地帯」に逃げ込むやいなや、その生存戦略は劇的に変化する。</p>
+                <p>「マツバさぁん……ふにゃあ……♡」</p>
+                <p>これが、彼女の最強の奥義。</p>
+                <p>【甘え】。</p>
+                <p>それは敵（マツバの理性）を骨抜きにし、あらゆる攻撃（家事や仕事のストレス）を無効化し、最終的に望むものすべて（溺愛と快楽）を手に入れる、天下無双の生存術である。</p>
+
+                <div class="log-divider" style="margin: 3rem 0; border-bottom: 2px dashed #ffb6c1;"></div>
+
+                <p>ある休日の午後。エンジュジムの離れにある和室。</p>
+                <p>マツバは書き物をしていた。ジムの運営報告書に目を通し、真剣な眼差しで筆を走らせている。</p>
+                <p>「……ふみゅう」</p>
+                <p>イヨリは退屈していた。マツバの膝枕という特等席を確保しながら、天井の木目を数えることしかできない。マツバが仕事をしている時は邪魔をしてはいけない。それは良き妻としての矜持だ。</p>
+                <p>しかし。</p>
+                <p>（マツバさんが、構ってくれない……）</p>
+                <p>ぽつりと、心の中に不満の種が落ちた。その種は瞬く間に芽吹き、「甘えたい」という蔦となってイヨリの全身を絡め取っていく。</p>
+                <p>イヨリはそっと動いた。</p>
+                <p>マツバの仕事の邪魔にならないよう、気配を消して――。</p>
+                <p>「……ん」</p>
+                <p>マツバの太腿の上で、ごろん、と寝返りを打つ。そして、彼の腹部に自分の顔を埋めた。</p>
+                <p>これが第一の策。【死んだふり】ならぬ、【埋まったふり】。</p>
+                <p>「……イヨリ？」</p>
+                <p>筆が止まる。マツバの困惑した声が降ってくる。</p>
+                <p>「どうしたの。苦しくない？」</p>
+                <p>「……くうぅ……」</p>
+                <p>イヨリは答えない。ただ、マツバのお腹の温かさと、和服越しの引き締まった腹筋の感触を頬で味わう。すりすりと猫のように頬ずりをする。</p>
+                <p>「……くすぐったいよ」</p>
+                <p>マツバが苦笑する気配。しかし、まだ筆を置く気配はない。</p>
+                <p>（まだ……まだ足りないの？）</p>
+                <p>イヨリの中の「ふにゃ姫」が覚醒する。逃げ若が逃げることで敵を撹乱したように、ふにゃ姫は甘えることで敵の理性を撹乱するのだ。</p>
+                <p>イヨリは次の手を打った。</p>
+                <p>マツバの帯の隙間に、そっと手を差し込む。</p>
+                <p>「っ！？」</p>
+                <p>マツバの身体が大きく跳ねた。第二の策。【懐に入り込む】。</p>
+                <p>「イヨリ、そこは……」</p>
+                <p>「……手が、冷たいんです」</p>
+                <p>上目遣いで、マツバを見上げる。左目の白濁した瞳と、右目の潤んだ瞳。その左右非対称の視線が、マツバの心臓を正確に射抜く。</p>
+                <p>「温めて、くれますよね……？」</p>
+                <p>計算などない。ただ本能のままに放たれた一撃。それは百発百中の命中精度を誇る、イヨリ固有の宝具だった。</p>
+                <p>マツバが筆を置いた。</p>
+                <p>カタン、という音が、勝利のゴングのように響く。</p>
+                <p>「……ああ。いいよ」</p>
+                <p>マツバの声色が、仕事モードの硬質なものから、蜂蜜のように甘くとろけたものへと変化する。
+                    その変化こそ、イヨリが待ち望んでいたもの。</p>
+                <p>「仕事は、もう終わりにする。……ここからは、イヨリの時間だ」</p>
+                <p>「わぁ……♡」</p>
+                <p>イヨリの顔がぱあっと輝いた。勝利だ。完全勝利だ。</p>
+                <p>しかし、イヨリはまだ知らなかった。</p>
+                <p>敵（マツバ）が本気を出した時の恐ろしさを。</p>
+                <p>乱世の英雄が「逃げる」ことで生き延びたのに対し、この男は「攻める」ことにおいて他の追随を許さない、エンジュ最強のジムリーダーであることを。</p>
+
+                <div class="log-divider" style="margin: 3rem 0; border-bottom: 2px dashed #9370db;"></div>
+
+                <p>「さて。仕事の邪魔をした悪い子には、お仕置きが必要かな」</p>
+                <p>マツバがにっこりと笑った。背後に不動明王のようなオーラが見える気がする。</p>
+                <p>「えっ……お、おしおき……？」</p>
+                <p>「うん。イヨリが大好きな、甘〜いお仕置きだよ」</p>
+                <p>マツバの手が、イヨリの服に伸びた。抵抗する間もなく、リボンが解かれ、ボタンが外されていく。</p>
+                <p>「あっ、ちょっ、マツバさん……！」</p>
+                <p>「逃げられないよ。僕の膝の上に自分から乗ってきたんだから」</p>
+                <p>その通りだった。ここはマツバの領域。絶対王者のテリトリー。
+                    自ら飛び込んだ獲物を、この男が逃がすはずがない。</p>
+                <p>「き、今日は、お膝の上でゴロゴロしたかっただけで……」</p>
+                <p>「うん。ゴロゴロさせてあげる。……裸でね」</p>
+                <p>あっという間に、イヨリは生まれたままの姿にされた。
+                    昼下がりの柔らかい光の中で、白磁のような肌が露わになる。恥じらいで染まった桜色の肌が、マツバの視線を吸い寄せる。</p>
+                <p>「可愛いね、イヨリ」</p>
+                <p>マツバの指が、イヨリの敏感な場所を的確になぞる。
+                    首筋、鎖骨、そして胸の膨らみ。</p>
+                <p>「んぁっ……♡」</p>
+                <p>「ここ、触って欲しかったんでしょ？」</p>
+                <p>「ち、ちが……うぅ……♡」</p>
+                <p>「嘘はいけないな。身体はこんなに正直なのに」</p>
+                <p>マツバの親指が、ぷっくりと尖った乳首を弾いた。
+                    ビクンッ！ とイヨリの身体が跳ねる。</p>
+                <p>「んぅっ……！♡」</p>
+                <p>「ほらね。こんなに感じてる」</p>
+                <p>マツバは楽しそうに、けれど目は笑っていない捕食者の瞳で、イヨリの全身を愛撫し始めた。
+                    逃げ場はない。逃げる必要もない。
+                    ここは、世界で一番安全で、世界で一番危険な、マツバの腕の中なのだから。</p>
+
+                <p>「ふにゃ……マツバさん……♡」</p>
+                <p>「何かな？」</p>
+                <p>「もっと……♡ もっといじめて……♡」</p>
+                <p>イヨリがいじらしく懇願する。
+                    これぞ奥義【肉を切らせて骨を断つ】ならぬ、【服を脱がせて愛を得る】。</p>
+                <p>マツバの理性が、音を立てて崩壊した。</p>
+                <p>「……望むところだ」</p>
+
+                <div class="log-divider" style="margin: 3rem 0; border-bottom: 2px dashed #ffd700;"></div>
+
+                <p>そこからは、甘い地獄の始まりだった。</p>
+                <p>マツバの舌が、イヨリの全身を舐め尽くす。
+                    耳の裏、指のまた、膝の裏。普段は触れられないような場所まで、執拗に、ねっとりと。</p>
+                <p>「んっ、ぁ……♡ そこ、くすぐったいぃ……♡」</p>
+                <p>「くすぐったい？ じゃあ、ここは？」</p>
+                <p>舌先が、イヨリの秘所の入り口を捉えた。</p>
+                <p>「んっ、ぁ……っ！？♡♡」</p>
+                <p>直接的な刺激ではない。焦らすように、周りをひらひらと蝶が舞うように舐める。</p>
+                <p>「焦らされるの、好きでしょう？」</p>
+                <p>「ず、ずるい……っ！ マツバさん、いじわる……っ！」</p>
+                <p>「意地悪じゃないよ。愛だよ」</p>
+                <p>愛という名の拷問。けれどそれは、イヨリにとって至上の快楽。</p>
+                <p>「ねえイヨリ。中、欲しい？」</p>
+                <p>マツバが意地悪く聞く。
+                    自身はすでに硬く昂り、限界まで膨張しているのに、あえて聞くのだ。</p>
+                <p>イヨリは涙目で頷いた。</p>
+                <p>「ほしい……♡ マツバさんの、太いの……ほしい……♡」</p>
+                <p>「よくできました」</p>
+                <p>ズチュッ。</p>
+                <p>濡れそぼった秘所に、マツバの剛直が一気に侵入する。</p>
+                <p>「んぁぁ……っ、入って……くるぅ……っ♡♡♡」</p>
+                <p>イヨリの絶叫が、和室に響き渡った。
+                    満たされる感覚。引き裂かれるような、けれど溶け合うような、矛盾した快楽。</p>
+                <p>「すごい……イヨリの中、熱い……吸い付いてくる……」</p>
+                <p>「マツバさんっ……大きいっ……お腹いっぱいっ……♡♡」</p>
+                <p>「まだだよ。これからもっと、いっぱいにしてあげる」</p>
+                <p>マツバの腰が駆動し始める。
+                    正確無比なピストン運動。イヨリの性感帯をミリ単位で擦り上げる、匠の技。</p>
+                <p>「んっ、はぁっ、くぅん、んぅ……っ♡♡♡」</p>
+                <p>イヨリの声が、言葉にならなくなっていく。
+                    ただ快楽に翻弄され、波に漂う小舟のように、マツバの動きに合わせて揺さぶられる。</p>
+                <p>チャリン、チャリーン♪</p>
+                <p>幻聴だろうか。イヨリがイくたびに、どこかでコインの音が聞こえる気がする。
+                    ああ、これはきっと『あまえコイン』だ。
+                    マツバに愛されて、甘やかされて、私が幸せになるたびに貯まっていく、目に見えない愛の通貨。</p>
+                <p>「イクッ……！ マツバさんっ、イっちゃうっ……！！」</p>
+                <p>「いいよ。僕の中でイって」</p>
+                <p class="sweet-climax">「ひゃぅ……っ！　んくっ、いっちゃうぅぅ……っ！！♡♡♡♡（絶頂）」</p>
+                <p>イヨリの身体が弓なりに反り、激しく痙攣した。
+                    内壁がマツバを締め上げ、蜜が溢れ出す。</p>
+                <p>けれど、マツバは止まらない。
+                    イヨリの絶頂を合図に、さらに激しく、深く、打ち据えるように腰を振る。</p>
+                <p>「まだだ……まだ離さない……っ！」</p>
+                <p>「んっ、ぁ、ぁ……っ！　もう、だめぇ……っ！　とけちゃうぅ……っ！♡♡」</p>
+                <p>「無理じゃない。君はまだいける。僕がそうさせる」</p>
+                <p>逃げられない。
+                    この快楽からは、絶対に逃げられない。</p>
+                <p>「んぅ、ぁ、くぅん……っ、マツバさぁん……っ♡♡♡」</p>
+                <p>二度、三度と絶頂の波が押し寄せる。
+                    イヨリの意識は白く飛び、自分が誰なのか、ここがどこなのかも分からなくなっていく。
+                    ただ分かるのは、マツバに愛されているという事実だけ。</p>
+                <p>「イヨリ……っ、愛してる……っ！」</p>
+                <p>「わたしもっ……マツバさんっ……だいすきっ……！！♡♡♡」</p>
+                <p>そして。</p>
+                <p>「っ、出る……ッ！！」</p>
+                <p>ドピュッ、ドピュッ、ドピュウッ……！！</p>
+                <p>マツバの楔が、イヨリの最奥で弾けた。
+                    熱い種が、脈動と共に注ぎ込まれる。
+                    生命の源。愛の結晶。
+                    それがイヨリのお腹の中を満たし、温めていく。</p>
+                <p class="sweet-climax">「んぅぅぅぅぅぅ……っ！！！！！♡♡♡♡♡（同時絶頂）」</p>
+
+                <p>長い、長い余韻。</p>
+                <p>二人の身体は重なり合ったまま、荒い呼吸を繰り返している。
+                    汗ばんだ肌が触れ合い、心臓の音が二重奏を奏でている。</p>
+                <p>「……はぁ……はぁ……ふにゃぁ……♡」</p>
+                <p>イヨリは完全に溶けていた。
+                    骨の一本一本まで蕩けて、スライムのようにマツバに張り付いている。</p>
+                <p>「……ごちそうさまでした」</p>
+                <p>マツバが満足げに呟き、イヨリの額にキスをした。</p>
+                <p>「ふみゅう……マツバさんの、いじわる……♡」</p>
+                <p>「甘え上手な君への、精一杯の愛だよ」</p>
+                <p>イヨリはふにゃりと笑った。</p>
+                <p>ああ、勝てない。
+                    この人には、一生敵わない。</p>
+                <p>でも、それでいい。</p>
+                <p>だって私は「甘え上手」なふにゃ姫様なのだから。</p>
+                <p>これからもずっと、この人の腕の中で、甘えて、蕩けて、愛されて生きていくのだ。</p>
+                <p>それが私の、最強の生存戦略なのだから。</p>
+
+                <p class="fin">― Fin. ―</p>
+
+                <div class="afterword">
+                    <h3 class="afterword-title">あとがき（佐藤美咲の祝辞）</h3>
+                    <p>松井優征先生。「逃げ上手の若君」完結、本当におめでとうございます！ そしてお疲れ様でした！！</p>
+                    <p>歴史の敗者とされがちな北条時行様を、あんなにも魅力的な主人公として描ききり、乱世を「逃げる」という視点で切り取ったその独創性。ジャンプの歴史に残る傑作でした。</p>
+                    <p>最終回の余韻に浸りながら、あたしは思いました。「逃げ」の先に何があるのか。それは「安息」であり、愛する人と過ごす「平和」な時間なのだと。</p>
+                    <p>今回の「甘え上手のふにゃ姫」は、そんな想いを込めたパロディです（本当か？）。</p>
+                    <p>マツバという絶対的な強者の前で、イヨリは決して力では勝てません。しかし、「甘える」という一点突破において、彼女はマツバを凌駕し、コントロールさえしてのけます。これはある意味、弱者の兵法であり、愛の逃走劇なのです。
+                    </p>
+                    <p>……まあ、御託はともかく、イヨリちゃんが可愛く喘いで、マツバさんが幸せそうに種付けできれば、それが一番だよね！！</p>
+                    <p>これからも、二人の「逃げ場のない愛」を書き続けていきます。</p>
+                    <p>ふにゃふにゃ万歳！ 甘え上手万歳！</p>
+                </div>
+            </article>
+
+            <div class="funya-navigation">
+                <a href="list.html" class="return-link">現実の書庫へ戻る</a>
+                <a href="index.html" class="return-link">星と花の小夜曲へ戻る</a>
+            </div>
+
+            <div class="funya-footer">
+                &copy; 2026 STELLAR FLOWER / FUNYAFUNYA KINGDOM SPECIAL NOVEL.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const coinCounter = document.getElementById('coin-count');
+        let totalCoins = 0;
+        function createCoin(x, y) {
+            const coin = document.createElement('div');
+            coin.className = 'amae-coin';
+            coin.style.left = x + 'px';
+            coin.style.top = y + 'px';
+            const velocityX = (Math.random() - 0.5) * 10;
+            const velocityY = -15 - Math.random() * 10;
+            document.body.appendChild(coin);
+            let posX = x; let posY = y; let velX = velocityX; let velY = velocityY;
+            let rotation = 0; let rotSpeed = (Math.random() - 0.5) * 20;
+            const interval = setInterval(() => {
+                velY += 0.8; posX += velX; posY += velY; rotation += rotSpeed;
+                coin.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
+                if (posY > window.innerHeight + 100) { clearInterval(interval); coin.remove(); }
+            }, 16);
+            totalCoins++; coinCounter.innerText = totalCoins;
+        }
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 5; i++) { setTimeout(() => { createCoin(e.clientX, e.clientY); }, i * 50); }
+        });
+        setInterval(() => {
+            if (Math.random() > 0.7) { const x = Math.random() * window.innerWidth; createCoin(x, -50); }
+        }, 800);
+        const climaxes = document.querySelectorAll('.sweet-climax');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(() => { const x = Math.random() * window.innerWidth; createCoin(x, -50); }, i * 30);
+                    }
+                }
+            });
+        });
+        climaxes.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
