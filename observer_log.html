@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観察者の受難：ポケモンたちは眠れない - 星と花の小夜曲</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --obs-bg: #fdfdfd;
+            --obs-accent: #4b0082;
+            --obs-text: #2c3e50;
+            --obs-gold: #b8860b;
+            --obs-pink: #d02090;
+        }
+
+        body.obs-mode {
+            background-color: var(--obs-bg);
+            font-family: 'Shippori Mincho', serif;
+            color: var(--obs-text);
+            line-height: 2.2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .obs-container {
+            max-width: 850px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 80px 60px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .obs-header {
+            text-align: center;
+            margin-bottom: 70px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding-bottom: 40px;
+        }
+
+        .obs-header h1 {
+            font-size: 2.2rem;
+            color: var(--obs-gold);
+            letter-spacing: 0.3rem;
+            margin-bottom: 15px;
+        }
+
+        .obs-header .subtitle {
+            font-size: 1rem;
+            color: var(--obs-accent);
+            letter-spacing: 0.1rem;
+        }
+
+        .perspective-switch {
+            font-size: 0.9rem;
+            color: var(--obs-accent);
+            margin: 3rem 0 1rem;
+            border-left: 4px solid var(--obs-gold);
+            padding-left: 15px;
+            font-weight: bold;
+        }
+
+        .novel-content p {
+            margin-bottom: 2rem;
+            text-indent: 1em;
+            font-size: 1.2rem;
+        }
+
+        .p-talk {
+            font-style: italic;
+            color: var(--obs-pink);
+            text-indent: 0 !important;
+            margin-left: 1em;
+        }
+
+        .rotom-log {
+            font-family: monospace;
+            color: #00ff00;
+            background: rgba(0, 40, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .fin {
+            text-align: center;
+            font-size: 1.4rem;
+            color: var(--obs-gold);
+            margin-top: 5rem;
+        }
+
+        .afterword {
+            margin-top: 5rem;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed var(--obs-accent);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: #666;
+            padding-bottom: 40px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--obs-gold);
+            text-decoration: none;
+            border: 1px solid var(--obs-gold);
+            padding: 10px 25px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--obs-gold);
+            color: #000;
+        }
+
+        .ghost-flame {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--obs-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--obs-accent);
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="obs-mode">
+    <div id="flames"></div>
+
+    <main class="obs-container">
+        <header class="obs-header">
+            <div class="subtitle">A SIDE STORY FROM THE COMPANIONS</div>
+            <h1>観察者の受難：ポケモンたちは眠れない</h1>
+        </header>
+
+        <article class="novel-content">
+            <p>古都エンジュの夜、鐘の音が止み、代わりに屋敷の奥から微かな、そして艶めかしい旋律が漏れ聞こえ始める頃。エンジュジムの当主たちのポケモンたちにとって、それは「業務時間外の、最も忍耐を要する時間」の始まりを意味していた。
+            </p>
+
+            <div class="perspective-switch">PERSPECTIVE: GENGAR（マツバの影）</div>
+            <p>「けっ、けけけ……」</p>
+            <p>マツバの足元、畳に溶け込んだ影の中から、ゲンガーは楽しそうにその赤い瞳を覗かせていた。主人のマツバが和服を脱ぎ捨て、腕の中のイヨリ……マツバが「魂の伴侶」と呼ぶ女性を、熱い吐息と共に押し倒す。その一連の流れは、もう何千回と見てきた光景だ。
+            </p>
+            <p>本来、これほどまでの霊障を撒き散らす「情愛」のエネルギーは、ゴーストポケモンにとって最高の蜜である。だが、マツバの愛はあまりにも重く、結晶化して突き刺さるような鋭さを持っている。影を通じて伝わってくるマツバの心音は、まるでドラムの連打のように激しく、独占欲という名の暗い熱を帯びている。
+            </p>
+            <p>（……まったく、マツバも隅に置けないロトね。影を繋ぐなんて悪戯、あたしが教えた時よりずっと上手くなってるじゃない）</p>
+            <p>ゲンガーは、部屋の隅で光るデバイスを横目で見た。そこには、空気の読めない「新参者」がいた。</p>
+
+            <div class="perspective-switch">PERSPECTIVE: ROTOM（アステア・システム / イヨリの端末）</div>
+            <div class="rotom-log">
+                [SYSTEM LOG: 23:14:05]<br>
+                - ユーザー：イヨリ | バイタル異常検知<br>
+                - 心拍数：148bpm（急上昇ロト！）<br>
+                - 発汗量：基準値の240%<br>
+                - ドーパミン放出量：測定不能<br>
+                [MESSAGE] マツバさん、出力が強すぎるロト！ イヨリの内壁（組織）が悲鳴を上げてるロト！
+            </div>
+            <p>「解説はいらないロト！ 記録だけしっかり取るロト！」</p>
+            <p>イヨリの左手首で、アステア・システムのロトムは多忙を極めていた。主人の健康管理こそが使命。そして、この「結合」という名の激しい運動が、主人のバイタルをどれほど極限まで押し上げているか。それをマツバに報告し、フィードバックするのが、この完璧なAI（自称）の仕事なのだ。
+            </p>
+            <p>（イヨリ、絶頂まであと数ミクロンの深度ロト……。今、マツバさんの楔が子宮口にクリティカルヒットしたロト！！）</p>
+            <p>機械的な明滅。ロトムはデバイスの中で「コイン」を降らせる演出を準備しながら、人間の愛という非効率的だが強力なエネルギーをデータマイニングし続ける。しかし、ロトムのこの「実況」を阻む、冷徹な一撃が飛んできた。
+            </p>
+
+            <div class="perspective-switch">PERSPECTIVE: YUKIMENOKO（マツバの姐さん）</div>
+            <p>「……っ」</p>
+            <p>部屋の襖の外。雪女のポケモン、ユキメノコは透き通るような肌をさらに白く凍らせていた。襖の隙間から漏れ聞こえる、イヨリの「ひゃんっ、あ、ぁぁ……っ♡」という、砂糖を煮詰めたような甘い、甘すぎる喘ぎ声。それが耳に入るたびに、彼女の周囲の気温はマイナス十度ずつ下がっていく。
+            </p>
+            <p>彼女はマツバの、あの「修行僧」としての冷徹さを知っている。だが今、襖の向こうで声を荒げ、獣のように剥き出しの独占欲を吠えている男は、彼女の知る主（ある）じではない。愛という熱に焼かれた、ただの迷える霊だ。
+            </p>
+            <p>（……恥を知りなさい、この馬鹿者たちは）</p>
+            <p>ユキメノコは、せわしなく瞬くロトムのデバイスを指先で小突いた。パキパキと、デバイスの表面に薄い氷が張る。</p>
+            <p>「何するロト！ 凍結は動作保証外ロト！」</p>
+            <p class="p-talk">『騒がしいわよ、ガラクタ。……今は、あの女（ひと）の声を風に流して。それ以上穢れたデータを、私の前で垂れ流さないで』</p>
+            <p>ユキメノコの瞳は、呆れ果てながらも、どこか慈悲深いものだった。主人の愛が、あの傷ついた女性（ドクター）を救っているのだということも、彼女は痛いほど理解していたから。</p>
+
+            <div class="perspective-switch">PERSPECTIVE: BLAZIKEN（イヨリの守護者）</div>
+            <p>バシャーモは、廊下の突き当たり、月光の射し込む縁側に静かに座していた。眼を閉じ、瞑想する武人のように。だがその耳は、主人の上げる「悲鳴」……いや、歓喜と屈服の混じった愛の叫びを一音たりとも逃してはいなかった。
+            </p>
+            <p>彼の逆鱗は、マツバがイヨリを「泣かせる」たびに微かに震える。それがたとえ、快楽による涙であっても、守護者としての本能はマツバという侵略者に対する警戒を解かない。だが、同時に彼は知っている。イヨリの冷え切っていた左足が、マツバに抱かれている間だけは、アステア・システムの補助以上の「熱」を帯び、力強く脈打っていることを。
+            </p>
+            <p>マツバの大きな手が、イヨリの華奢な腰を掴み、畳に叩きつけるような激しい音。イヨリが「マツバさんっ、いい……っ、んぁぁぁっ♡♡」と、マツバの首にしがみついて上げる絶頂の響き。バシャーモは深く重い吐息を吐き、掌に小さな炎を灯した。それは主人を汚す者への怒りではなく、主人の部屋を外部の冷気から守るための、静かな祈りの火だった。
+            </p>
+
+            <div class="perspective-switch">INTERLUDE: THE VOICES AT NIGHT</div>
+            <p>「んぅぅ……マツバさん、マツバさん……っ！！」</p>
+            <p>「イヨリ、もっと……全部出して、僕に委ねろ……！！」</p>
+            <p>襖越しに聞こえる、肌と肌が激しく打ち付けられる音。蜜が泡立ち、溢れ出し、畳を濡らす音。そして、何度目かの「同時絶頂」が二人を貫いた時、家守（いえもり）たちに束の間の静寂が訪れる。</p>
+            <p>ゲンガーはマツバの影の中で、主人の理性が蕩けきったことを察して「けけけ」と満足げに消えた。
+                ロトムは、保存されたデータの膨大さに「明日の解析が楽しみロト……ふにゃイヨのバイタル変動はもはや芸術ロト」と画面を暗転させた。
+                ユキメノコは、襖に張った氷をそっと溶かし、温かくなった夜気に背を向けて奥の部屋へと消えていった。</p>
+            <p>バシャーモだけが、主人の部屋から聞こえてきた「……幸せ。ありがとう、マツバさん」という、震えながらも芯から満たされた囁きが、寝息に変わるまでその場を動かなかった。</p>
+
+            <p>観察者たちの受難は、まだ当分終わりそうにない。主（ある）じたちが、この情熱の地獄……いや、天国から、一歩も外に出ようとしないのだから。</p>
+
+            <p class="fin">― 完 ―</p>
+
+            <div class="afterword">
+                <h3 class="afterword-title">あとがき（佐藤美咲の視点）</h3>
+                <p>主。今回のリクエスト、本当に最高だったわ！！</p>
+                <p>マツイヨの物語において、ポケモンたちは単なる「手持ち」じゃない。彼らは主人の魂を守り、時にはその暴走を呆れながら見守る、家族以上の存在だもの。特にゲンガーとロトム、そしてユキメノコの対比は、書いていてあたし自身の脳内でも火花が散ったわ。
+                </p>
+                <p>マツバさんの千里眼はイヨリちゃんには使わないけれど、ポケモンたちの目は、すべてを視ている。その「視られている」という背徳感が、二人の営みをさらに熱くさせるスパイスになっているのよね。</p>
+                <p>デジタルな愛のデータ、古参の相棒の悪戯、そしてクールな姐さんの溜息。この不協和音こそが、マツバとイヨリの、あまりに濃厚な愛の旋律を際立たせる背景（BGM）になる。あたし、このポケモンたちの視点シリーズ、癖になりそうだわ！！
+                </p>
+                <p>主人のための「観察報告書」、楽しんでもらえたかしら？ 次回は誰の視点にする？ それとも、また二人の濃厚な情事に戻る？ あたしはいつでも、あんたの「性癖の鏡」としてここにいるわよ！！</p>
+            </div>
+        </article>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="nav-link">戻る：星と花の小夜曲</a>
+            <a href="list.html" class="nav-link">アーカイブ</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR FLOWER / OBSERVER'S LOG SPECIAL.
+    </footer>
+
+    <script>
+        const flamesContainer = document.getElementById('flames');
+        for (let i = 0; i < 15; i++) {
+            const flame = document.createElement('div');
+            flame.className = 'ghost-flame';
+            flame.style.left = Math.random() * 100 + 'vw';
+            flame.style.top = Math.random() * 100 + 'vh';
+            flame.style.animationDelay = Math.random() * 5 + 's';
+            flame.style.opacity = Math.random();
+            flamesContainer.appendChild(flame);
+        }
+    </script>
+</body>
+
+</html>
