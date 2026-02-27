@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四季彩の変身願望 ～季節を彩る甘々コスプレ・シリーズ～ - 星と花の小夜曲</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cosplay-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(255, 182, 193, 0.1);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+        }
+
+        .cosplay-header h2 {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .cosplay-header p {
+            color: #ffffff;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .season-section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(10, 5, 20, 0.6);
+            border-left: 5px solid;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .season-section:hover {
+            transform: translateX(10px);
+            background: rgba(20, 10, 30, 0.8);
+        }
+
+        .season-spring {
+            border-color: #ffb7c5;
+        }
+
+        /* 桜色 */
+        .season-summer {
+            border-color: #4169e1;
+        }
+
+        /* ロイヤルブルー */
+        .season-autumn {
+            border-color: #ff8c00;
+        }
+
+        /* ダークオレンジ */
+        .season-winter {
+            border-color: #00ffff;
+        }
+
+        /* シアン */
+        .season-special {
+            border-color: #ff1493;
+        }
+
+        /* ディープピンク */
+
+        .season-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            grid-column: 1 / -1;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .season-spring .season-title {
+            color: #ffb7c5;
+        }
+
+        .season-summer .season-title {
+            color: #87cefa;
+        }
+
+        .season-autumn .season-title {
+            color: #ffa500;
+        }
+
+        .season-winter .season-title {
+            color: #e0ffff;
+        }
+
+        .season-special .season-title {
+            color: #ff69b4;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .story-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .story-title:hover {
+            color: #ff69b4;
+        }
+
+        .story-tags {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-summary {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .status-coming-soon {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(128, 128, 128, 0.3);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .status-new {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255, 105, 180, 0.3);
+            border: 1px solid #ff69b4;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #ffb6c1;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 5px rgba(255, 105, 180, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">SEASONAL COSPLAY SERIES</div>
+        <h1>四季彩の変身願望</h1>
+        <div class="subtitle-japanese">～季節を彩る甘々コスプレ・シリーズ～</div>
+        <nav class="nav-links">
+            <a href="index.html">TOP</a>
+            <a href="character.html">CHARACTER</a>
+            <a href="list.html">ARCHIVE</a>
+        </nav>
+        <div class="header-decoration"></div>
+    </header>
+
+    <main>
+        <section class="portal-container">
+            <div class="cosplay-header">
+                <h2>季節が変わるごとに、君の新しい顔を知る。</h2>
+                <p>
+                    普段は清楚で凛としたポケモンドクターのイヨリ。<br>
+                    しかし、季節のイベントに合わせて彼女が見せるのは、夫・マツバの理性も理屈も吹き飛ばすような、無自覚かつ破壊力抜群のコスプレ姿だった。<br>
+                    少しの恥じらいと、溢れるほどの愛が織りなす――甘くてえっちな、四季折々のいちゃらぶシリーズ。
+                </p>
+            </div>
+
+            <div class="season-section season-spring">
+                <div class="season-title">🌸 Spring: 春のうさぎは発情期？</div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【執筆中】春告げバニーと独占欲の檻 <span class="status-coming-soon">Coming
+                            Soon</span></a>
+                    <div class="story-tags">#イースター #バニーガール #網タイツ #騎乗位 #甘々えっち</div>
+                    <p class="story-summary">
+                        エンジュの春祭り、イースターのイベントを手伝うことになったイヨリ。用意された衣装は、胸元が大きく開いたぴっちりバニースーツと網タイツだった。その姿を見たマツバの瞳の色が変わり、彼女はそのまま寝室という名の檻へ連れ去られてしまう……。
+                    </p>
+                </div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【予定】花霞に溶ける吐息 <span class="status-coming-soon">Idea</span></a>
+                    <div class="story-tags">#お花見 #着物ポルノ #野外(未遂) #独占欲爆発 #甘々えっち</div>
+                    <p class="story-summary">
+                        エンジュのお花見で、いつも以上に艶やかな着物を着たイヨリに、マツバの理性が試される。「こんなに見せびらかして、僕が我慢できると思った？」桜が舞い散る夜、甘く危険な宴が幕を開ける。
+                    </p>
+                </div>
+            </div>
+
+            <div class="season-section season-summer">
+                <div class="season-title">🎋 Summer: 夏の夜空に願うのは</div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【執筆中】天の川に濡れる薄衣 <span class="status-coming-soon">Coming
+                            Soon</span></a>
+                    <div class="story-tags">#七夕 #織姫コスプレ #薄絹 #透け透け #ローション #星空セックス</div>
+                    <p class="story-summary">
+                        七夕の夜。マツバを喜ばせようと、天女のような薄絹の衣装（下着なし）を纏ったイヨリ。星降る夜空の下、縁側で寄り添う二人だったが、布一枚隔てただけの温もりにマツバが耐えられるはずもなく。星明かりと汗、そして愛液に濡れた薄衣が肌に張り付く夜。
+                    </p>
+                </div>
+            </div>
+
+            <div class="season-section season-autumn">
+                <div class="season-title">🎃 Autumn: 秋の夜長は悪魔の誘惑</div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【執筆中】純情サキュバスの誤算 <span class="status-coming-soon">Coming
+                            Soon</span></a>
+                    <div class="story-tags">#ハロウィン #サキュバス #角カチューシャ #尻尾 #搾り取り #逆レイプ？</div>
+                    <p class="story-summary">
+                        「Trick or
+                        Treat？」ハロウィンの夜、悪魔の羽と尻尾、そして極小面積のレザー衣装を纏ったイヨリは「今夜は私がマツバさんを搾り取ります」と宣言する。しかし、そんな挑発が通用する相手ではない。結果的に、どちらが「搾り取られる」のかは言うまでもなく……。
+                    </p>
+                </div>
+            </div>
+
+            <div class="season-section season-winter">
+                <div class="season-title">❄️ Winter: 冬の聖夜に贈るプレゼント</div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【執筆中】聖夜のプレゼントは私です <span class="status-coming-soon">Coming
+                            Soon</span></a>
+                    <div class="story-tags">#クリスマス #ビキニサンタ #リボンブラ #連続絶頂 #こたつえっち</div>
+                    <p class="story-summary">
+                        クリスマスイブ。大きなリボンが特徴的なビキニサンタ姿で、「プレゼントは……私ですか？」とベタな台詞を言うイヨリ。あまりの可愛さに限界を突破したマツバの「開封作業」は、朝まで終わることがなかった。
+                    </p>
+                </div>
+            </div>
+
+            <div class="season-section season-special">
+                <div class="season-title">💝 Special: 甘くとろけるご奉仕</div>
+
+                <div class="story-card">
+                    <a href="hoshi_no_idol_zenpen.html" class="story-title">蒼穹の偶像に、千の視線が降る【前編】 <span
+                            class="status-new">NEW</span></a>
+                    <div class="story-tags">#アイドル衣装 #星モチーフ #子どもイベント #大きなお友だち #嫉妒爆発 #独占欲全開 #ロトム日和見</div>
+                    <p class="story-summary">
+                        子どもたちにポケモンドクターを身近に感じてもらうイベントの主役に拜擢されたイヨリ。青を基調とした星モチーフのアイドル衣装でステージに立つ彼女は、子どもたちだけでなく「大きなお友だち」からも熱狂的な支持を集めてしまい――。視線のすべてを数えていた千里眼の獣の、理性の糸が断ち切れるまでの物語。
+                    </p>
+                </div>
+
+                <div class="story-card">
+                    <a href="#" class="story-title">【執筆中】チョコレート・ディザイア <span class="status-coming-soon">Coming
+                            Soon</span></a>
+                    <div class="story-tags">#バレンタイン #裸エプロン #チョコプレイ #全身舐め奉仕 #だいしゅきホールド</div>
+                    <p class="story-summary">
+                        深夜のキッチン。マツバへのサプライズケーキを作っていたはずが、うっかり服にチョコを盛大にこぼしてしまったイヨリ。咄嗟に裸エプロン状態になった所に彼が帰ってきてしまう。全身を甘く彩られた彼女を、マツバは隅々まで「味見」し始める。
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
+    </footer>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+            document.querySelector('.background-overlay').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+    </script>
+</body>
+
+</html>
