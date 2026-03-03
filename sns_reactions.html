@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポストまとめ：エンジュシティ ポケモンセンター イベント - 星と花の小夜曲</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sns-container {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .sns-header {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(29, 155, 240, 0.08);
+            border: 1px solid rgba(29, 155, 240, 0.2);
+            border-radius: 16px;
+        }
+
+        .sns-header h2 {
+            color: #e7e9ea;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sns-header p {
+            color: #71767b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .event-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 2.5rem 0 1.5rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(29, 155, 240, 0.06);
+            border-radius: 12px;
+            border-left: 4px solid #1d9bf0;
+        }
+
+        .event-divider .event-emoji {
+            font-size: 1.8rem;
+        }
+
+        .event-divider .event-label {
+            color: #e7e9ea;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .event-divider .event-date {
+            color: #71767b;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .tweet {
+            background: rgba(22, 24, 28, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .tweet:hover {
+            background: rgba(30, 33, 38, 0.95);
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .display-name {
+            color: #e7e9ea;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .handle {
+            color: #71767b;
+            font-size: 0.8rem;
+        }
+
+        .tweet-time {
+            color: #71767b;
+            font-size: 0.75rem;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .tweet-body {
+            color: #e7e9ea;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.6rem;
+            word-break: break-word;
+        }
+
+        .tweet-body .hashtag {
+            color: #1d9bf0;
+        }
+
+        .tweet-body .mention {
+            color: #1d9bf0;
+        }
+
+        .tweet-stats {
+            display: flex;
+            gap: 1.5rem;
+            color: #71767b;
+            font-size: 0.8rem;
+        }
+
+        .tweet-stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tweet-stats .likes {
+            color: #f91880;
+        }
+
+        .tweet-stats .rts {
+            color: #00ba7c;
+        }
+
+        .tweet-stats .replies {
+            color: #1d9bf0;
+        }
+
+        .tweet.pinned {
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(40, 35, 20, 0.7);
+        }
+
+        .tweet.pinned::before {
+            content: "📌 ピン留めポスト";
+            display: block;
+            color: #71767b;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            padding-left: 50px;
+        }
+
+        .tweet.viral {
+            border: 1px solid rgba(29, 155, 240, 0.3);
+        }
+
+        .reply-chain {
+            border-left: 2px solid rgba(29, 155, 240, 0.3);
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+
+        .img-placeholder {
+            background: rgba(29, 155, 240, 0.1);
+            border: 1px solid rgba(29, 155, 240, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: #71767b;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .trending-box {
+            background: rgba(22, 24, 28, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .trending-box h3 {
+            color: #e7e9ea;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .trending-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+
+        .trending-item .trend-category {
+            color: #71767b;
+            font-size: 0.75rem;
+        }
+
+        .trending-item .trend-name {
+            color: #e7e9ea;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .trending-item .trend-count {
+            color: #71767b;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">SNS REACTIONS</div>
+        <h1>大きなお友だちの叫び</h1>
+        <div class="subtitle-japanese">― ポストまとめ ―</div>
+        <nav class="nav-links">
+            <a href="index.html">TOP</a>
+            <a href="cosplay_sweet_series.html">COSPLAY</a>
+            <a href="list.html">ARCHIVE</a>
+        </nav>
+        <div class="header-decoration"></div>
+    </header>
+
+    <main>
+        <div class="sns-container">
+
+            <div class="sns-header">
+                <h2>📱 エンジュシティ ポケセンイベント ポストまとめ</h2>
+                <p>エンジュシティ ポケモンセンターで開催された季節イベントに対する、X（旧Twitter）上の反応をまとめたものです。<br>
+                    ※「大きなお友だち」の皆様の生の声をお届けします。</p>
+            </div>
+
+            <!-- トレンド -->
+            <div class="trending-box">
+                <h3>🔥 トレンド（エンジュシティ）</h3>
+                <div class="trending-item">
+                    <div class="trend-category">トレンド1位 · エンジュシティ</div>
+                    <div class="trend-name">#イヨリ先生サンタ</div>
+                    <div class="trend-count">12,847件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">トレンド2位</div>
+                    <div class="trend-name">#エンジュポケセンイベント</div>
+                    <div class="trend-count">9,203件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">トレンド3位</div>
+                    <div class="trend-name">#マツバジムリーダー</div>
+                    <div class="trend-count">6,441件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">トレンド4位</div>
+                    <div class="trend-name">#大きなお友だち反省会</div>
+                    <div class="trend-count">4,892件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">トレンド5位</div>
+                    <div class="trend-name">#コスプレドクター</div>
+                    <div class="trend-count">3,156件のポスト</div>
+                </div>
+            </div>
+
+            <!-- ===== 序章：アイドル衣装 ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">⭐</span>
+                <span class="event-label">序章：星のアイドル衣装</span>
+                <span class="event-date">2025年 早春</span>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a2e;">📷</div>
+                    <div class="user-info">
+                        <span class="display-name">カメラ小僧のタケシ</span>
+                        <span class="handle">@takeshi_camera_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/02/15</span>
+                </div>
+                <div class="tweet-body">
+                    えっ待って今日のポケセンイベント行ったんだけど往診医のイヨリ先生がアイドル衣装着てステージ立ってんの　は？？？？　あの清楚な先生が？？？？　星モチーフのミニスカ衣装で踊ってたんだけど？？？？　俺は今なにを見ている？？？？<br><br>
+                    <span class="hashtag">#エンジュポケセンイベント</span> <span class="hashtag">#イヨリ先生</span> <span
+                        class="hashtag">#大きなお友だち</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 89</span>
+                    <span class="rts">🔁 1,247</span>
+                    <span class="likes">❤️ 4,893</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2d1b4e;">🎮</div>
+                    <div class="user-info">
+                        <span class="display-name">ゴーストタイプ専門トレーナー</span>
+                        <span class="handle">@ghost_master_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/02/15</span>
+                </div>
+                <div class="tweet-body">
+                    マツバさんのジム挑戦に来たのに今日休みで、代わりにポケセンのイベント覗いたら人生変わった。イヨリ先生ってあの往診の先生でしょ？？ なんであんなに可愛いの？？
+                    顔がいい。脚がいい。声がいい。全部いい。助けて。<br><br>
+                    <span class="hashtag">#イヨリ先生</span> <span class="hashtag">#ジム休みで人生変わった</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 34</span>
+                    <span class="rts">🔁 412</span>
+                    <span class="likes">❤️ 2,103</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#0d3b2e;">🌿</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュの薬剤師</span>
+                        <span class="handle">@enju_pharmacy</span>
+                    </div>
+                    <span class="tweet-time">2025/02/15</span>
+                </div>
+                <div class="tweet-body">
+                    イヨリ先生にうちのニドラン♀診てもらったことあるんだけど、本当に優しくて丁寧な先生なのよ。あの先生がアイドル衣装……？ 意味がわからないくらい似合ってた。
+                    しかもマツバさんが客席の隅で腕組んでたの見た人いる？？ あの顔怖かったんだけど<br><br>
+                    <span class="hashtag">#エンジュポケセンイベント</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 56</span>
+                    <span class="rts">🔁 387</span>
+                    <span class="likes">❤️ 1,876</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/02/15</span>
+                </div>
+                <div class="tweet-body">
+                    子どもイベントに独身のおっさんが行っていいのか30分悩んだ末にポケモンと一緒に行った。結論だけ言う。行ってよかった。イヨリ先生のスマイルは合法兵器。次も行く。反省はしていない。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 78</span>
+                    <span class="rts">🔁 2,547</span>
+                    <span class="likes">❤️ 8,321</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1b3a5c;">📸</div>
+                    <div class="user-info">
+                        <span class="display-name">望遠レンズの神谷</span>
+                        <span class="handle">@kamiya_telephoto</span>
+                    </div>
+                    <span class="tweet-time">2025/02/15</span>
+                </div>
+                <div class="tweet-body">
+                    撮影許可出たから300mm望遠で撮ったんだけど、マツバさんに千里眼で睨まれてる気がしてシャッター押す手が震えた。あの人絶対こっち見てた。心臓に悪い。<br><br>
+                    <span class="hashtag">#千里眼怖い</span> <span class="hashtag">#大きなお友だち</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 124</span>
+                    <span class="rts">🔁 3,891</span>
+                    <span class="likes">❤️ 9,456</span>
+                </div>
+            </div>
+
+            <!-- ===== 春：うさぎ ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">🐰</span>
+                <span class="event-label">春：もふもふうさぎ衣装</span>
+                <span class="event-date">2025年 イースター</span>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/04/20</span>
+                </div>
+                <div class="tweet-body">
+                    二回目来ました。反省はしていません。今回はうさぎです。もふもふです。尻尾がぽんぽんです。子どもたちが尻尾触らせてもらってました。ぼくも触りたい。嘘です。触りたいけど言わない。大人なので。<br><br>
+                    <span class="hashtag">#エンジュポケセンイベント</span> <span class="hashtag">#もふもふうさぎ</span> <span
+                        class="hashtag">#大人の我慢</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 203</span>
+                    <span class="rts">🔁 5,672</span>
+                    <span class="likes">❤️ 14,891</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a2040;">🔮</div>
+                    <div class="user-info">
+                        <span class="display-name">マツバさん推し女子</span>
+                        <span class="handle">@matsuba_love_joshi</span>
+                    </div>
+                    <span class="tweet-time">2025/04/20</span>
+                </div>
+                <div class="tweet-body">
+                    マツバさんが!!!!! イベント会場の柱の影から!!!! イヨリ先生のうさぎ尻尾を!!!! 子どもに触らせてるのを見て!!! あの綺麗な眉間にシワ寄せてたの見た!!!! 嫉妬！！
+                    あれは嫉妬だわ！！！！ マツバさんの嫉妬顔は国宝！！！！<br><br>
+                    <span class="hashtag">#マツバさんの嫉妬顔</span> <span class="hashtag">#国宝級</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 67</span>
+                    <span class="rts">🔁 891</span>
+                    <span class="likes">❤️ 3,412</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2b4a2b;">🥚</div>
+                    <div class="user-info">
+                        <span class="display-name">エッグハント全敗マン</span>
+                        <span class="handle">@egg_hunter_lose</span>
+                    </div>
+                    <span class="tweet-time">2025/04/20</span>
+                </div>
+                <div class="tweet-body">
+                    エッグハントで5歳児に完敗した29歳。いいのよ別に。うさぎイヨリ先生が「がんばったね☆」って慰めてくれたから。むしろ負けた方がご褒美な気がする。もう一回負けたい。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 45</span>
+                    <span class="rts">🔁 1,832</span>
+                    <span class="likes">❤️ 7,123</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a2e;">📷</div>
+                    <div class="user-info">
+                        <span class="display-name">カメラ小僧のタケシ</span>
+                        <span class="handle">@takeshi_camera_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/04/20</span>
+                </div>
+                <div class="tweet-body">
+                    前回撮影許可もらったから今回も張り切って来たんだけど、カメラマン前回3人だったのに今回15人いるんだが？？　お前らどこから湧いた？？？ 口コミ怖すぎだろ<br><br>
+                    <span class="hashtag">#大きなお友だち増殖中</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 34</span>
+                    <span class="rts">🔁 912</span>
+                    <span class="likes">❤️ 3,567</span>
+                </div>
+            </div>
+
+            <!-- ===== 梅雨：紫陽花の妖精 ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">☔</span>
+                <span class="event-label">梅雨：紫陽花の妖精衣装</span>
+                <span class="event-date">2025年 梅雨</span>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1b3a5c;">📸</div>
+                    <div class="user-info">
+                        <span class="display-name">望遠レンズの神谷</span>
+                        <span class="handle">@kamiya_telephoto</span>
+                    </div>
+                    <span class="tweet-time">2025/06/21</span>
+                </div>
+                <div class="tweet-body">
+                    これカメラマンの命に関わる案件なんだけど、今回の衣装シースルーのオーガンジーなの。雨に濡れると透けるの。俺たちに何を撮れと？？ 全員紳士撮影で肩から上しか撮ってないの偉すぎない？？
+                    でも目に焼き付いてしまった。ごめんなさい。<br><br>
+                    <span class="hashtag">#紳士協定</span> <span class="hashtag">#目に焼き付いた罪</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 156</span>
+                    <span class="rts">🔁 4,231</span>
+                    <span class="likes">❤️ 11,345</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/06/21</span>
+                </div>
+                <div class="tweet-body">
+                    三回目です。もう反省を問うな。今回イヨリ先生が紫陽花の妖精なんだけど、子どもに「もりにかえっちゃうの？」って聞かれた時にマツバさんが即座に「森には返さないよ」って言ったのリアタイしちゃった。あの……それは公開プロポーズでは……？？？？
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 234</span>
+                    <span class="rts">🔁 7,891</span>
+                    <span class="likes">❤️ 18,234</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2b2b4a;">☂️</div>
+                    <div class="user-info">
+                        <span class="display-name">レインコート常備委員会</span>
+                        <span class="handle">@raincoat_committee</span>
+                    </div>
+                    <span class="tweet-time">2025/06/21</span>
+                </div>
+                <div class="tweet-body">
+                    マツバさんが即座にレインコート掛けたの、あれ嫉妬のスピードとしてはどうなの？？ 光の速さで透け防止してたけど？？ 千里眼って透けも見えるわけ？？ だとしたら最強にして最悪の能力じゃん<br><br>
+                    <span class="hashtag">#千里眼の無駄遣い</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 89</span>
+                    <span class="rts">🔁 3,456</span>
+                    <span class="likes">❤️ 9,012</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a2040;">🔮</div>
+                    <div class="user-info">
+                        <span class="display-name">マツバさん推し女子</span>
+                        <span class="handle">@matsuba_love_joshi</span>
+                    </div>
+                    <span class="tweet-time">2025/06/21</span>
+                </div>
+                <div class="tweet-body">
+                    「森には返さないよ」←子どもへの回答<br>
+                    「森には返さないよ」←イヨリ先生への宣言<br>
+                    「森には返さないよ」←全人類への警告<br><br>
+                    同じセリフなのに三重の意味があるの文学すぎない？？？？ マツバさんの語彙力がエグい
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 78</span>
+                    <span class="rts">🔁 2,345</span>
+                    <span class="likes">❤️ 8,901</span>
+                </div>
+            </div>
+
+            <!-- ===== 夏：織姫 ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">🎋</span>
+                <span class="event-label">夏：七夕の織姫衣装</span>
+                <span class="event-date">2025年 七夕</span>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a2e;">📷</div>
+                    <div class="user-info">
+                        <span class="display-name">カメラ小僧のタケシ</span>
+                        <span class="handle">@takeshi_camera_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/07/07</span>
+                </div>
+                <div class="tweet-body">
+                    カメラマン30人になった。もう同窓会だよこれ。全員手帳に「エンジュポケセンイベント」って書いてある。趣味欄が同じ。名刺交換した。なんだこのコミュニティ。<br><br>
+                    今回の織姫衣装は薄絹で星明かりに透けるんだけど、全員紳士撮影を遵守。俺たちの団結力を見せてやった。<br><br>
+                    <span class="hashtag">#大きなお友だち紳士協会</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 178</span>
+                    <span class="rts">🔁 6,789</span>
+                    <span class="likes">❤️ 15,432</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/07/07</span>
+                </div>
+                <div class="tweet-body">
+                    四回目です。短冊に願い事書くコーナーがあったので「来年もイベントがありますように」って書いたら5歳児に「おじさんのねがいごとかわいいね！」って言われた。泣いた。<br><br>
+                    あとイヨリ先生の短冊「百年先もとなりにいられますように」って書いてあったの見える位置にあってしんどい。尊すぎて吐く。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 145</span>
+                    <span class="rts">🔁 4,567</span>
+                    <span class="likes">❤️ 13,891</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2d1b4e;">🎮</div>
+                    <div class="user-info">
+                        <span class="display-name">ゴーストタイプ専門トレーナー</span>
+                        <span class="handle">@ghost_master_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/07/07</span>
+                </div>
+                <div class="tweet-body">
+                    あの……マツバさんの短冊「叶った」って書いてあるの、これ彦星に対する完全勝利宣言では……？ 織姫が隣にいるからもう願い事がないってこと……？ カッコよすぎて膝から崩れ落ちたが？？？？<br><br>
+                    <span class="hashtag">#叶った</span> <span class="hashtag">#二文字の殺傷力</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 201</span>
+                    <span class="rts">🔁 8,123</span>
+                    <span class="likes">❤️ 21,567</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#0d3b2e;">🌿</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュの薬剤師</span>
+                        <span class="handle">@enju_pharmacy</span>
+                    </div>
+                    <span class="tweet-time">2025/07/07</span>
+                </div>
+                <div class="tweet-body">
+                    私もう完全に大きなお友だちの仲間入りしちゃってるんだけど、薬局の常連さんに「あなたも行ってるの？」って言われて「もちろん」って即答した40代女です。性別関係ない。イヨリ先生の織姫は全人類に効く。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 56</span>
+                    <span class="rts">🔁 1,234</span>
+                    <span class="likes">❤️ 5,678</span>
+                </div>
+            </div>
+
+            <!-- ===== 秋：小悪魔 ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">🎃</span>
+                <span class="event-label">秋：ハロウィン小悪魔衣装</span>
+                <span class="event-date">2025年 ハロウィン</span>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/10/31</span>
+                </div>
+                <div class="tweet-body">
+                    五回目です。もはやライフワーク。今回はハロウィンで小悪魔衣装なんだけどね、聞いてくれ。網タイツ。イヨリ先生が。網タイツ。ハート型胸元カット。角カチューシャ。悪魔の尻尾。<br><br>
+                    天国でした。もう死んでもいい。いや来月もあるから死ねない。<br><br>
+                    <span class="hashtag">#人類の限界</span> <span class="hashtag">#網タイツは正義</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 312</span>
+                    <span class="rts">🔁 9,876</span>
+                    <span class="likes">❤️ 24,567</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1b3a5c;">📸</div>
+                    <div class="user-info">
+                        <span class="display-name">望遠レンズの神谷</span>
+                        <span class="handle">@kamiya_telephoto</span>
+                    </div>
+                    <span class="tweet-time">2025/10/31</span>
+                </div>
+                <div class="tweet-body">
+                    カメラマン50人到達。もはや報道陣。紳士協定が全員に周知され、暗黙のルールとして「全身撮影は膝下まで、アングルは水平以上」が徹底された。俺たちの紳士力は進化している。<br><br>
+                    なお今回マツバさんのプレッシャーも進化しており、千里眼の殺気が物理的に感じられた。怖い。<br><br>
+                    <span class="hashtag">#大きなお友だち紳士協会</span> <span class="hashtag">#千里眼の圧</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 98</span>
+                    <span class="rts">🔁 3,456</span>
+                    <span class="likes">❤️ 9,123</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a2040;">🔮</div>
+                    <div class="user-info">
+                        <span class="display-name">マツバさん推し女子</span>
+                        <span class="handle">@matsuba_love_joshi</span>
+                    </div>
+                    <span class="tweet-time">2025/10/31</span>
+                </div>
+                <div class="tweet-body">
+                    「この悪魔を捕まえた」って言いながらイヨリ先生の尻尾掴んでたマツバさん、あれは子どもの前で許される発言の限界ギリギリだったと思う。薄い本が厚くなる。<br><br>
+                    しかしマツバさんの嫉妬がイベント重ねるごとに進化してるのはファンとしてごちそうすぎる。嫉妬のソムリエになれそう。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 89</span>
+                    <span class="rts">🔁 2,345</span>
+                    <span class="likes">❤️ 7,891</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a3b20;">🎭</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュのイタコ衆・見習い</span>
+                        <span class="handle">@itako_minarai</span>
+                    </div>
+                    <span class="tweet-time">2025/10/31</span>
+                </div>
+                <div class="tweet-body">
+                    先輩方から「イヨリ先生のイベント見てこい、修行になる」って言われたんですけど何の修行ですか？？ 霊力の修行？？ 煩悩との闘い？？ どっち？？<br><br>
+                    見てきた感想：煩悩でした。圧倒的に煩悩でした。先輩方全員大きなお友だちだった。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 67</span>
+                    <span class="rts">🔁 4,567</span>
+                    <span class="likes">❤️ 12,345</span>
+                </div>
+            </div>
+
+            <!-- ===== 冬：サンタ ===== -->
+            <div class="event-divider">
+                <span class="event-emoji">🎄</span>
+                <span class="event-label">冬：ミニスカサンタ衣装【最終回】</span>
+                <span class="event-date">2025年 クリスマス・イヴ</span>
+            </div>
+
+            <div class="tweet pinned">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#c41e3a;">🎅</div>
+                    <div class="user-info">
+                        <span class="display-name">ポケモンセンター エンジュ【公式】</span>
+                        <span class="handle">@pokecen_enju_official</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    🎄クリスマス・イブ特別イベント開催のお知らせ🎄<br><br>
+                    本日のクリスマスイベントをもちまして、イヨリ先生の季節コスプレシリーズは最終回となります。<br>
+                    一年間ご来場いただいた皆様、ありがとうございました。<br><br>
+                    ※会場内は一般来場者を含め満員となっております。お子様連れのお客様を優先くださいますようお願い致します。<br><br>
+                    <span class="hashtag">#エンジュポケセンイベント</span> <span class="hashtag">#最終回</span> <span
+                        class="hashtag">#ありがとうイヨリ先生</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 456</span>
+                    <span class="rts">🔁 12,345</span>
+                    <span class="likes">❤️ 34,567</span>
+                </div>
+            </div>
+
+            <div class="tweet viral">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    六回目です。最終回です。一年間皆勤賞です。表彰してほしい。<br><br>
+                    ミニスカサンタ。ニーハイ。ガーターベルト。死因：イヨリ先生。<br><br>
+                    でもね、最後のメッセージでイヨリ先生が「この街がもっと大好きになりました」って泣いたの。<br><br>
+                    俺も泣いた。42歳の男がポケセンの隅で泣いた。隣の大きなお友だちも泣いてた。七十人の大きなお友だちが全員泣いてた。<br><br>
+                    <span class="hashtag">#最終回</span> <span class="hashtag">#ありがとうイヨリ先生</span> <span
+                        class="hashtag">#大きなお友だち号泣</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 789</span>
+                    <span class="rts">🔁 18,901</span>
+                    <span class="likes">❤️ 47,234</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a2e;">📷</div>
+                    <div class="user-info">
+                        <span class="display-name">カメラ小僧のタケシ</span>
+                        <span class="handle">@takeshi_camera_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    カメラマン最終回集計。初回3人→15人→25人→30人→50人→70人。一年で23倍に増えた。<br><br>
+                    そして最終回、全員が全身撮影した。紳士協定の一年間の集大成として、最後の一枚だけは全身を。イヨリ先生の涙と笑顔。あの写真は宝物にする。<br><br>
+                    <span class="hashtag">#大きなお友だち紳士協会</span> <span class="hashtag">#最後の一枚</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 234</span>
+                    <span class="rts">🔁 8,901</span>
+                    <span class="likes">❤️ 23,456</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1b3a5c;">📸</div>
+                    <div class="user-info">
+                        <span class="display-name">望遠レンズの神谷</span>
+                        <span class="handle">@kamiya_telephoto</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    マツバさんがカメラマン集団の前に来て「彼女の写真を撮ってくれた全員に感謝する。ただし、これだけは覚えておいてほしい。あれは僕のだ」って言ったの。<br><br>
+                    七十人の大きなお友だち、全員敬礼した。<br><br>
+                    俺たちはファンだ。でもマツバさんは彼氏だ。格が違う。わかりました。最初からわかってました。でも好きです。<br><br>
+                    <span class="hashtag">#あれは僕のだ</span> <span class="hashtag">#知ってた</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 567</span>
+                    <span class="rts">🔁 15,678</span>
+                    <span class="likes">❤️ 38,901</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a2040;">🔮</div>
+                    <div class="user-info">
+                        <span class="display-name">マツバさん推し女子</span>
+                        <span class="handle">@matsuba_love_joshi</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    一年間のマツバさんの嫉妬進化まとめ：<br><br>
+                    序章：柱の影で腕組み（初期型）<br>
+                    春：眉間のシワ（触覚型）<br>
+                    梅雨：レインコート光速装備（濡透型）<br>
+                    夏：「叶った」（完全勝利型）<br>
+                    秋：尻尾掴む（魅了型）<br>
+                    冬：「あれは僕のだ」（公開宣言型）<br><br>
+                    嫉妬のソムリエとして言わせて、最終回が一番ストレートで一番かっこよかった。ありがとうマツバさん。<br><br>
+                    <span class="hashtag">#嫉妬進化論</span> <span class="hashtag">#シリーズ完結</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 345</span>
+                    <span class="rts">🔁 12,345</span>
+                    <span class="likes">❤️ 31,234</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#0d3b2e;">🌿</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュの薬剤師</span>
+                        <span class="handle">@enju_pharmacy</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    一年間通い詰めた40代女の最終報告。<br><br>
+                    この一年で得たもの：<br>
+                    ・大きなお友だち仲間70人<br>
+                    ・イヨリ先生の笑顔の記憶6シーズン分<br>
+                    ・カメラ趣味（神谷さんに教わった）<br>
+                    ・生きがい<br><br>
+                    失ったもの：<br>
+                    ・「私は大きなお友だちじゃない」という自尊心<br><br>
+                    <span class="hashtag">#大きなお友だちの自覚</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 123</span>
+                    <span class="rts">🔁 5,678</span>
+                    <span class="likes">❤️ 16,789</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2d1b4e;">🎮</div>
+                    <div class="user-info">
+                        <span class="display-name">ゴーストタイプ専門トレーナー</span>
+                        <span class="handle">@ghost_master_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    一年前、マツバさんのジムが休みだったから偶然ポケセンに行っただけなのに。あの日がなかったら大きなお友だちにならなかった。人生何があるかわからない。<br><br>
+                    最終回のイヨリ先生の涙見て思った。この一年間、俺たちはイヨリ先生を応援してたんじゃなくて、イヨリ先生に元気をもらってたんだ。<br><br>
+                    ありがとう、イヨリ先生。<br><br>
+                    <span class="hashtag">#ありがとうイヨリ先生</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 201</span>
+                    <span class="rts">🔁 7,890</span>
+                    <span class="likes">❤️ 21,345</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a3b20;">🎭</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュのイタコ衆・見習い</span>
+                        <span class="handle">@itako_minarai</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    先輩方が全員最終回で号泣してて、えっイタコ衆ってこんなに涙もろかったっけ？？ って思ったけどよく考えたら霊を扱う人たちだから感情豊かなの当然か。<br><br>
+                    大師範が「わしの目からエクトプラズムが出とる」って言ってたけど涙です。それは涙です。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 89</span>
+                    <span class="rts">🔁 6,789</span>
+                    <span class="likes">❤️ 18,901</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2b4a2b;">🥚</div>
+                    <div class="user-info">
+                        <span class="display-name">エッグハント全敗マン</span>
+                        <span class="handle">@egg_hunter_lose</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    春にエッグハントで5歳児に負けてから全イベント通った29歳、今日30歳の誕生日だった。クリスマスイブ生まれ。イヨリ先生のサンタから「メリークリスマス」って言ってもらえた。最高の誕プレ。来年も頼む。<br><br>
+                    あっ最終回だった。泣いていい？<br><br>
+                    <span class="hashtag">#誕生日が最終回</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 156</span>
+                    <span class="rts">🔁 4,567</span>
+                    <span class="likes">❤️ 15,678</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#5a3010;">🏪</div>
+                    <div class="user-info">
+                        <span class="display-name">商店街のおかみさん連合</span>
+                        <span class="handle">@enju_okami_rengo</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    イベントの日はポケセン周辺のお店の売上が普段の3倍になるので、商店街としてはイヨリ先生に足を向けて寝られません。大きなお友だちの皆さん、お買い物ありがとうございます。来年もよろしくお願いします。<br><br>
+                    ……来年もやりますよね？？🥺
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 78</span>
+                    <span class="rts">🔁 2,345</span>
+                    <span class="likes">❤️ 8,901</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2a2a3a;">🏋️</div>
+                    <div class="user-info">
+                        <span class="display-name">筋トレ中のジム門番</span>
+                        <span class="handle">@enju_gym_guard</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    マツバさんからイベント警備を頼まれた。表向きは「子どもたちの安全のため」だが、実際の業務内容は「イヨリ先生のミニスカサンタに近づきすぎる大きなお友だちの阻止」だった。マツバさん、千里眼あるのになぜ俺を配置した？？
+                    「念のため」って答えたけど目が笑ってなかった。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 112</span>
+                    <span class="rts">🔁 5,432</span>
+                    <span class="likes">❤️ 14,567</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3d1a1a;">🍜</div>
+                    <div class="user-info">
+                        <span class="display-name">ラーメン屋台のゲンさん</span>
+                        <span class="handle">@gen_ramen_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    イベント終わりの大きなお友だちが70人うちの屋台に押し寄せた。全員泣きながらラーメン食ってた。「最終回だったんすよ……」って言われて事情聞いたら俺まで泣きそうになった。大盛りサービスしといた。<br><br>
+                    <span class="hashtag">#泣きラーメン70杯</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 89</span>
+                    <span class="rts">🔁 6,789</span>
+                    <span class="likes">❤️ 19,012</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a3a1a;">🧑‍⚕️</div>
+                    <div class="user-info">
+                        <span class="display-name">コガネシティの獣医</span>
+                        <span class="handle">@kogane_vet</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    同業者としてイヨリ先生のイベントが気になって、コガネシティから日帰りで来ました。ポケモンドクターがここまで地域に愛されてるの見て泣きそうになった。うちの市でもこういうイベントやってほしい。<br><br>
+                    あと大きなお友だちのマナーが異常に良くてビビった。紳士協会すごい。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 67</span>
+                    <span class="rts">🔁 2,345</span>
+                    <span class="likes">❤️ 7,890</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a3020;">👴</div>
+                    <div class="user-info">
+                        <span class="display-name">マツバ父（非公式）</span>
+                        <span class="handle">@matsuba_chichi</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    息子がイベントで70人の男の前で「あれは僕のだ」って言ったらしい。母さんに報告したら「あの子もようやくね」って泣いてた。父さんはイヨリちゃんにもっと優しくしてやれとだけ言いたい。お前の嫉妬は父さん似だ。すまん。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 456</span>
+                    <span class="rts">🔁 14,567</span>
+                    <span class="likes">❤️ 42,345</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a4a;">🔧</div>
+                    <div class="user-info">
+                        <span class="display-name">デボンコーポレーション技術部</span>
+                        <span class="handle">@devon_tech_div</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    弊社のアステア・システムを装着しているイヨリ先生のバイタルデータ、イベント中に毎回異常値を記録するのでバグかと思ったら、全部「幸福度の上限突破」でした。仕様です。<br><br>
+                    <span class="hashtag">#デボンコーポレーション</span> <span class="hashtag">#仕様です</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 201</span>
+                    <span class="rts">🔁 8,901</span>
+                    <span class="likes">❤️ 23,456</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a2a1a;">🎸</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュの路上ミュージシャン</span>
+                        <span class="handle">@enju_street_music</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    イベント帰りの大きなお友だちの集団がうちの前を通りかかった時、弾いてた曲がたまたまクリスマスソングだったら全員足を止めて泣き始めた。何があったの？？ こっちまで泣くからやめて？？
+                    投げ銭すごかったけど。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 56</span>
+                    <span class="rts">🔁 3,456</span>
+                    <span class="likes">❤️ 11,234</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#2a1a3a;">👻</div>
+                    <div class="user-info">
+                        <span class="display-name">ゲンガー（マツバの）</span>
+                        <span class="handle">@gengar_matsuba_shadow</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    ゲンゲンガー（マスター、帰り道でずっとニヤニヤしてたゲン。「あれは僕のだ」って言った後に自分で真っ赤になってたの、影に潜ってる俺には丸見えだったゲン。最終回だから特別に暴露するゲン）<br><br>
+                    <span class="hashtag">#ゲンガー暴露</span> <span class="hashtag">#影から見てた</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 678</span>
+                    <span class="rts">🔁 21,345</span>
+                    <span class="likes">❤️ 52,678</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#5a1a2a;">💄</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ美容院のミキさん</span>
+                        <span class="handle">@miki_beauty_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    イベント前日にイヨリ先生がうちでヘアセットに来てくれて、「明日で最後なんです」って言いながらちょっと寂しそうだったの。あの先生、衣装は毎回恥ずかしがってるのに、子どもたちの笑顔のためにって毎回頑張ってたんだよ。知ってた？
+                    大きなお友だちは知らないでしょ、この裏側。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 234</span>
+                    <span class="rts">🔁 9,012</span>
+                    <span class="likes">❤️ 28,901</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a4a3a;">📦</div>
+                    <div class="user-info">
+                        <span class="display-name">衣装製作のハナちゃん</span>
+                        <span class="handle">@hana_costume_maker</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    一年間イヨリ先生の衣装を縫わせてもらった者です。毎回イヨリ先生から「子どもが触っても安全な素材で」「動きやすいように」って注文が入って、自分が可愛く見えるかどうかは一度も聞かれなかった。あの先生、本当にいつも子どもファーストなの。<br><br>
+                    六着全部作れて光栄でした。ありがとうございました先生。<br><br>
+                    <span class="hashtag">#衣装製作裏話</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 345</span>
+                    <span class="rts">🔁 12,345</span>
+                    <span class="likes">❤️ 35,678</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1a3a;">👧</div>
+                    <div class="user-info">
+                        <span class="display-name">イベント常連のママ</span>
+                        <span class="handle">@event_mama_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    5歳の娘がイヨリ先生のサンタさんに「おおきくなったらイヨリせんせいみたいになりたい！」って言ったら先生が泣いちゃって、私も泣いちゃって、そばにいた大きなお友だちの集団も全員もらい泣きしてた。<br><br>
+                    あの空間、涙のダムが同時に決壊してた。<br><br>
+                    <span class="hashtag">#全員泣いてた</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 289</span>
+                    <span class="rts">🔁 11,234</span>
+                    <span class="likes">❤️ 31,567</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a2a4a;">🎬</div>
+                    <div class="user-info">
+                        <span class="display-name">タマムシTV取材班</span>
+                        <span class="handle">@tamamushi_tv_crew</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    地方のポケモンセンターイベントの取材に来たんですが、何ですかこの熱量は。カメラマン70人が全員紳士協定を遵守してる現場初めて見ました。ジムリーダーが客席から千里眼で睨んでくるのも初めてです。全国ニュースにしたい。<br><br>
+                    <span class="hashtag">#エンジュの奇跡</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 123</span>
+                    <span class="rts">🔁 7,890</span>
+                    <span class="likes">❤️ 19,345</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a3a1a;">🧓</div>
+                    <div class="user-info">
+                        <span class="display-name">イタコ衆・大師範</span>
+                        <span class="handle">@itako_daishihan</span>
+                    </div>
+                    <span class="tweet-time">2025/12/24</span>
+                </div>
+                <div class="tweet-body">
+                    老骨に鞭打って全六回通ったわい。最終回でイヨリ先生が泣いた時、わしの目からエクトプラズムが出よった。見習いの小僧が「それ涙です」と言いおるが、七十年霊と向き合ってきた男の涙はエクトプラズムなのじゃ。黙れ。<br><br>
+                    にしてもマツバの小僧、良い女を見つけおったのう。先代のジムリーダーも草葉の陰からニヤニヤしとるわい。
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 178</span>
+                    <span class="rts">🔁 8,567</span>
+                    <span class="likes">❤️ 24,567</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#4a1a1a;">🐾</div>
+                    <div class="user-info">
+                        <span class="display-name">イヨリ先生に診てもらった犬</span>
+                        <span class="handle">@iyori_patient_wanko</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    （飼い主代筆）うちのウインディがイヨリ先生に持病を治してもらって以来、先生を見ると尻尾が千切れそうに振るんです。今日のイベントで先生のサンタ衣装見て興奮しすぎて火を吹きかけた。先生は笑って許してくれた。マツバさんには睨まれた。ごめんなさい。<br><br>
+                    <span class="hashtag">#ウインディは悪くない</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 156</span>
+                    <span class="rts">🔁 7,654</span>
+                    <span class="likes">❤️ 22,345</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#1a1a2e;">📷</div>
+                    <div class="user-info">
+                        <span class="display-name">カメラ小僧のタケシ</span>
+                        <span class="handle">@takeshi_camera_enju</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    大きなお友だち紳士協会、解散のお知らせ。<br><br>
+                    ……というのは嘘です。「イヨリ先生復帰時即座参集」を全員で誓い合い、LINE グループ「紳士の集い（70名）」を作成しました。来年も呼ばれなくても行きます。<br><br>
+                    あとマツバさんを名誉会長にしたいです。本人に聞く勇気はない。<br><br>
+                    <span class="hashtag">#大きなお友だち紳士協会</span> <span class="hashtag">#永久存続</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 234</span>
+                    <span class="rts">🔁 9,876</span>
+                    <span class="likes">❤️ 27,890</span>
+                </div>
+            </div>
+
+            <div class="tweet">
+                <div class="tweet-header">
+                    <div class="avatar" style="background:#3a1515;">💀</div>
+                    <div class="user-info">
+                        <span class="display-name">エンジュ在住おじさん（42）</span>
+                        <span class="handle">@enju_ojisan_42</span>
+                    </div>
+                    <span class="tweet-time">2025/12/25</span>
+                </div>
+                <div class="tweet-body">
+                    深夜3時。眠れない。最終回ロスがすごい。<br><br>
+                    春のうさぎから始まって、梅雨の妖精、夏の織姫、秋の小悪魔、冬のサンタ。全部良かった。全部。あたたかくて、可愛くて、楽しくて。42歳独身のおじさんの一年間に「推し」ができたの、人生で初めてだった。<br><br>
+                    イヨリ先生、ありがとう。あなたのせいで俺はもう「ただのおじさん」には戻れない。大きなお友だちとして生きていく。<br><br>
+                    <span class="hashtag">#ありがとうイヨリ先生</span> <span class="hashtag">#大きなお友だちの誓い</span> <span
+                        class="hashtag">#深夜の感傷</span>
+                </div>
+                <div class="tweet-stats">
+                    <span class="replies">💬 891</span>
+                    <span class="rts">🔁 23,456</span>
+                    <span class="likes">❤️ 56,789</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
+    </footer>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+            document.querySelector('.background-overlay').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+    </script>
+</body>
+
+</html>
