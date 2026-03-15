@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観察者の聖域 | POKEMON PERSPECTIVE - ハーブティーと金平糖</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <style>
+        .pokemon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pokemon-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .pokemon-card:hover {
+            background: rgba(242, 192, 87, 0.05);
+            border-color: var(--konpeito-gold);
+            transform: translateY(-5px);
+        }
+
+        .pokemon-card h3 {
+            font-family: 'Zen Kurenaido', serif;
+            font-size: 1.5rem;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .pokemon-card .species {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--konpeito-gold);
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pokemon-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .special-link {
+            display: block;
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            border-top: 1px dashed var(--glass-border);
+        }
+
+        .special-link a {
+            color: var(--konpeito-gold);
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.2rem;
+            font-family: 'Zen Kurenaido', serif;
+            transition: all 0.3s;
+        }
+
+        .special-link a:hover {
+            color: var(--text-bright);
+            text-shadow: 0 0 10px var(--konpeito-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">Pokemon Perspective Archive</div>
+        <h1>観察者の聖域</h1>
+        <div class="subtitle-japanese">― 彼らが視た、二人の物語 ―</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="list.html">Archive</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="portal-container">
+            <div class="intro-text">
+                <p>マツバとイヨリ、二人が紡ぐ甘美で濃厚な時間。<br>
+                    その傍らで、静かに、あるいは呆れながら全てを見守る「観察者」たちがいた。<br>
+                    これは、影から、電脳から、あるいは空から視た、もう一つの真実の記録。</p>
+            </div>
+
+            <div class="pokemon-grid">
+                <a href="genga_shiten.html" class="pokemon-card">
+                    <div class="species">Gengar</div>
+                    <h3>ゲンガー</h3>
+                    <p>マツバの影に棲む最古の相棒。影を通じて伝わる情熱的な鼓動と、歪な寵愛を嗤う。</p>
+                </a>
+
+                <a href="bashamo_shiten.html" class="pokemon-card">
+                    <div class="species">Blaziken</div>
+                    <h3>バシャーモ</h3>
+                    <p>イヨリの最初の友。戦士としての顔を捨て、一人の女として愛される主君の幸福を見守る。</p>
+                </a>
+
+                <a href="rotom_shiten.html" class="pokemon-card">
+                    <div class="species">Rotom</div>
+                    <h3>ロトム</h3>
+                    <p>アステア・システムに常駐するAIロトム。イヨリのバイタルデータのオーバーヒートに警告を発し続ける。</p>
+                </a>
+
+                <a href="mumaji_shiten.html" class="pokemon-card">
+                    <div class="species">Mismagius</div>
+                    <h3>ムウマージ</h3>
+                    <p>魔術師のような帽子を被るゴーストポケモンが語る「最強の言霊」と甘美な呪文。</p>
+                </a>
+
+                <a href="roserade_shiten.html" class="pokemon-card">
+                    <div class="species">Roserade</div>
+                    <h3>ロズレイド</h3>
+                    <p>二人の愛を養分に育った「末っ子」が見守る、純度100%の溺愛の記録。</p>
+                </a>
+
+                <a href="fuwaride_shiten.html" class="pokemon-card">
+                    <div class="species">Drifblim</div>
+                    <h3>フワライド</h3>
+                    <p>風に乗って彷徨う気球。空を忘れたマツバを繋ぎ止める、重すぎる愛の引力を感知する。</p>
+                </a>
+
+                <a href="bariyado_shiten.html" class="pokemon-card">
+                    <div class="species">Mr. Mime</div>
+                    <h3>バリヤード</h3>
+                    <p>亡き母に代わりイヨリを育て上げた家政婦ポケモンの困惑と、娘の幸せを願う温かい目線。</p>
+                </a>
+
+                <a href="yonowaru_shiten.html" class="pokemon-card">
+                    <div class="species">Dusknoir</div>
+                    <h3>ヨノワール</h3>
+                    <p>現世と霊界を行き来する魂の監視者が語る、死んでも離さないという甘く重たい誓いの鎖。</p>
+                </a>
+
+                <a href="mukuhawk_shiten.html" class="pokemon-card">
+                    <div class="species">Staraptor</div>
+                    <h3>ムクホーク</h3>
+                    <p>忠義の猛禽。主の悲鳴に即座に反応し、禁忌の夜を「警護」し続ける。認定：敵ではない。</p>
+                </a>
+
+                <a href="todozeruga_shiten.html" class="pokemon-card">
+                    <div class="species">Walrein</div>
+                    <h3>トドゼルガ</h3>
+                    <p>イヨリのパートナーにして怠惰な海獣の王が見た、生真面目な主が蕩かされていく様。</p>
+                </a>
+
+                <a href="yukimenoko_shiten.html" class="pokemon-card">
+                    <div class="species">Froslass</div>
+                    <h3>ユキメノコ</h3>
+                    <p>かつての「氷のマツバ」を知る古参が見つめる、愛妻家への変貌と氷解の情事の記録。</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 HERB TEA & KONPEITO / CREATED BY SATOH MISAKI.
+    </footer>
+
+    <div class="snow-container"></div>
+    <script>
+        const snowContainer = document.querySelector('.snow-container');
+        const colors = ['#f2c057', '#f19eb5', '#95d5e2', '#aed581', '#d1c4e9', '#fff8e1'];
+        for (let i = 0; i < 40; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'snow';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.top = Math.random() * -100 + 'vh';
+            const size = Math.random() * 4 + 2;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+            petal.style.boxShadow = `0 0 10px ${petal.style.background}`;
+            petal.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            petal.style.animationDelay = (Math.random() * 8) + 's';
+            snowContainer.appendChild(petal);
+        }
+    </script>
+</body>
+
+</html>

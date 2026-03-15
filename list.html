@@ -7,6 +7,235 @@
     <title>星屑の標本箱 - マツバ×イヨリ作品集</title>
     <meta name="description" content="マツバ×イヨリの、甘く残酷な愛の記録。">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Archive Specific Styles ── */
+        .novel-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 1.8rem;
+            color: var(--konpeito-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3rem;
+        }
+
+        .series-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .series-title {
+            color: var(--konpeito-gold);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.2rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .work-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--konpeito-gold);
+            box-shadow: 0 10px 30px rgba(212, 168, 83, 0.15);
+        }
+
+        /* Badge Styles */
+        .work-status {
+            display: inline-block;
+            padding: 1px 8px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            letter-spacing: 0.1rem;
+            width: fit-content;
+            margin-bottom: 0.3rem;
+        }
+
+        .status-special {
+            background: var(--konpeito-pink);
+            color: #fff;
+        }
+
+        .status-kingdom {
+            background: var(--konpeito-blue);
+            color: #fff;
+        }
+
+        .status-series {
+            background: var(--tea-green);
+            color: #fff;
+        }
+
+        .status-new {
+            background: linear-gradient(135deg, var(--konpeito-pink), var(--konpeito-gold));
+            color: #fff;
+            animation: pulse-gold 2s infinite;
+        }
+
+        .status-hot {
+            background: #d35400;
+            color: #fff;
+        }
+
+        .status-completed {
+            background: var(--tea-leaf);
+            color: #fff;
+        }
+
+        .status-secret {
+            background: #4a148c;
+            color: #fff;
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 168, 83, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 168, 83, 0);
+            }
+        }
+
+        .work-info h3 a {
+            color: var(--text-bright);
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: 0.3s;
+        }
+
+        .work-info h3 a:hover {
+            color: var(--konpeito-gold);
+        }
+
+        .work-desc {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-top: 0.2rem;
+        }
+
+        .log-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            margin: 1.2rem 0;
+        }
+
+        /* Search & Filter Styles */
+        .search-filter-box {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            color: var(--text-bright);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--konpeito-gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(212, 168, 83, 0.1);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-bright);
+            border-color: var(--konpeito-gold);
+        }
+
+        .filter-btn.active {
+            background: var(--konpeito-gold);
+            color: #fff;
+            border-color: var(--konpeito-gold);
+        }
+
+        .work-item.hidden {
+            display: none !important;
+        }
+
+        .card-gakuen {
+            border-left: 4px solid var(--konpeito-gold);
+        }
+
+        .card-secret-diary {
+            border-left: 4px solid #8b0000;
+        }
+
+        /* Snow effect */
+        .snow {
+            position: fixed;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+            filter: blur(1px);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -20,10 +249,9 @@
         <div class="subtitle-japanese">― マツバ × イヨリ ―</div>
         <div class="subtitle">STARRING MATSUBA & IYORI</div>
         <nav class="nav-links">
-            <a href="index.html">TOP</a>
-            <a href="character.html">CHARACTER</a>
-            <a href="list.html">ARCHIVE</a>
-            <a href="iyori_dic.html">WIKI</a>
+            <a href="index.html">Home</a>
+            <a href="list.html">Archive</a>
+            <a href="iyori_dic.html">Wiki</a>
         </nav>
         <div class="header-decoration"></div>
     </header>
@@ -32,853 +260,625 @@
         <section class="novel-container">
             <h2 class="section-title">Log Archive</h2>
 
-            <div class="series-section" style="margin-bottom: 3rem;">
-                <h3
-                    style="color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); padding-bottom: 0.5rem; margin-bottom: 1.5rem; letter-spacing: 0.2rem;">
-                    SERIES & COLLECTIONS</h3>
+            <div class="search-filter-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search by title or description...">
+                <div class="filter-group" id="filterGroup">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="safe">健全</button>
+                    <button class="filter-btn" data-filter="r18">R18</button>
+                    <button class="filter-btn" data-filter="sweet">甘々</button>
+                    <button class="filter-btn" data-filter="pokemon">ポケモン視点</button>
+                </div>
+            </div>
 
-                <article class="work-item" style="border: 2px solid #ffb6c1; background: #fffafb; margin-bottom: 1rem;">
-                    <div class="work-status" style="background: #ffb6c1; color: #fff; border-color: #ffb6c1;">SPECIAL
-                    </div>
+            <div class="series-section">
+                <h3 class="series-title">SERIES & COLLECTIONS</h3>
+
+                <article class="work-item card-totsuki" data-genre="safe sweet">
+                    <div class="work-status status-special">SPECIAL</div>
                     <div class="work-info">
-                        <h3><a href="totsuki_toka.html"
-                                style="color: #d87093; font-weight:bold; font-size: 1.2rem;">【連作ポータル】十月十日の肖像 — 月に祈る、生命の譜
-                                —</a></h3>
-                        <p class="work-desc">満月の夜に芽吹いた命が、ゆっくりと育まれていく十月十日の物語。全十話＋番外編完結済み。マツイヨ愛の結晶が紡ぐ、慈愛と熱情の記録。</p>
+                        <h3><a href="totsuki_toka.html">【連作ポータル】十月十日の肖像 — 月に祈る、生命の譜 —</a></h3>
+                        <p class="work-desc">満月の夜に芽吹いた命が、ゆっくりと育まれていく十月十日の物語。全十話＋番外編完結済み。マツイヨ愛の結晶が紡ぐ、慈愛と熱情...
                     </div>
                 </article>
 
-                <article class="work-item" style="border: 2px solid #e6e6fa; background: #fdfdff; margin-bottom: 1rem;">
-                    <div class="work-status" style="background: #e6e6fa; color: #9370db; border-color: #9370db;">KINGDOM
-                    </div>
+                <article class="work-item card-funya" data-genre="safe sweet">
+                    <div class="work-status status-kingdom">KINGDOM</div>
                     <div class="work-info">
-                        <h3><a href="funya_world.html"
-                                style="color: #9370db; font-weight:bold;">【特別ポータル】ふにゃふにゃ王国へ入国する</a></h3>
+                        <h3><a href="funya_world.html">【特別ポータル】ふにゃふにゃ王国へ入国する</a></h3>
                         <p class="work-desc">「頑張らない」が唯一の法律。マツバとイヨリの、甘く優しく蕩けるだけの夢の王国への入り口。</p>
                     </div>
                 </article>
 
-                <article class="work-item" style="border: 2px solid #ff69b4; background: rgba(255, 182, 193, 0.1);">
-                    <div class="work-status" style="background: #ff69b4; color: #fff; border-color: #ff69b4;">SERIES
-                    </div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-series">SERIES</div>
                     <div class="work-info">
-                        <h3><a href="cosplay_sweet_series.html"
-                                style="color: #ff1493; font-weight:bold;">【連作ポータル】四季彩の変身願望 ～季節を彩る甘々コスプレ・シリーズ～</a></h3>
+                        <h3><a href="cosplay_sweet_series.html">【連作ポータル】四季彩の変身願望 ～季節を彩る甘々コスプレ・シリーズ～</a></h3>
                         <p class="work-desc">
                             「季節が変わるごとに、君の新しい顔を知る」。清楚なドクター・イヨリが、イベントのたびにアイドル、うさぎ、紫陽花、織姫、小悪魔、サンタに変身。マツバの理性が毎季節吹き飛ぶ全十二話の甘々いちゃらぶコスプレシリーズ。
                         </p>
                     </div>
                 </article>
 
-                <article class="work-item" style="border: 2px solid #ff69b4; background: rgba(255, 105, 180, 0.08);">
-                    <div class="work-status"
-                        style="background: linear-gradient(135deg, #ff69b4, #ff1493); color: #fff; border-color: #ff69b4; animation: pulse-new 2s infinite;">
-                        NEW
-                    </div>
+                <article class="work-item card-gakuen" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
-                        <h3><a href="gakuen_lovcom_portal.html"
-                                style="color: #ff1493; font-weight:bold; font-size: 1.2rem;">【連作ポータル】誰にでも優しい君が私にだけ向けた特別
-                                ～学園ラブコメディ全6話～</a></h3>
+                        <h3><a href="gakuen_lovcom_portal.html">【連作ポータル】誰にでも優しい君が私にだけ向けた特別 ～学園ラブコメディ全6話～</a></h3>
                         <p class="work-desc">
                             中学の転校初日に日直だったマツバに出会い、四年間の片想いを続けるイヨリ。実はマツバもまた同じ想いを抱えていた——。複数ヒロインもののラブコメなのに、大人しくて目立たないイヨリが勝つ！
                             仲間ヒロインたちの応援、甘すぎる放課後、そして夜明けまでの初体験。「僕」のまま理性が崩壊するマツバが最高にずるい、約10万字の大長編学園ラブコメ完結。
                         </p>
                     </div>
                 </article>
-            </div>
 
-            <div class="log-divider" style="margin: 3rem 0;"></div>
-            <h3 style="color: var(--text-dim); letter-spacing: 0.2rem; margin-bottom: 1.5rem;">INDIVIDUAL LOGS</h3>
+                <article class="work-item card-funya" data-genre="safe pokemon">
+                    <div class="work-status status-series">SERIES HUB</div>
+                    <div class="work-info">
+                        <h3><a href="pokemon_logs.html">【連作ポータル】観察者の聖域 — 彼らが視た、二人の物語 —</a></h3>
+                        <p class="work-desc">
+                            マツバとイヨリのあまりに激しく濃厚な情事を影から、あるいは電脳から見守るポケモンたちの視点を集めたポータルページ。
+                        </p>
+                    </div>
+                </article>
+            </div>
+            <div class="log-divider"></div>
+
+            <h3 style="color: var(--text-dim); letter-spacing: 0.2rem; margin-bottom: 2rem;">INDIVIDUAL LOGS</h3>
 
             <div class="work-list">
 
-                <article class="work-item" style="border: 2px solid #ff1493; background: rgba(255, 20, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #ff1493; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
+                    <div class="work-info">
+                        <h3><a href="hoshi_michiru.html">星満ちる</a></h3>
+                        <p class="work-desc">
+                            【全年齢/アフターストーリー】「星堕ちる」のその後。恋人になった二人が、病室で最後の一粒の金平糖を分け合う、最高に甘く温かい再会の記録。約10,000字。
+                        </p>
+                    </div>
+                </article>
+
+                <article class="work-item" data-genre="safe">
+                    <div class="work-status status-new">NEW</div>
+                    <div class="work-info">
+                        <h3><a href="hoshi_ochiru.html">星堕ちる</a></h3>
+                        <p class="work-desc">
+                            【イヨリ視点/全年齢】十年前の因縁、両親の死、そしてマツバの告白。溢れ出す涙と共に、イヨリが自分の本当の想いに気づき、覚悟を決めるまで。約10,000字。
+                        </p>
+                    </div>
+                </article>
+
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="hoshi_ga_furu.html">星が降る</a></h3>
                         <p class="work-desc">
-                            【マツバ視点/全年齢】イヨリからハーブティーをお裾分けしてもらったお返しに、マツバが金平糖を贈るまでを丁寧に描く。ジョーイさんの一言から「夜勤中につまめる甘いもの」を探す中で出会った、星に似た形の菓子。彼女の苗字、趣味、そして溢れ出す想いの結晶。深夜のポケモンセンターに、小さな星が降り積もる温かな物語。約10,000字。
+                            【マツバ視点/全年齢】イヨリからハーブティーをお裾分けしてもらったお返しに、マツバが金平糖を贈るまでを丁寧に描く。ジョーイさんの一言から「夜勤中につまめる甘いもの」を探す中で出会った、星に似た形の菓子。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff1493; background: rgba(255, 20, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #ff1493; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="ichibyo_demo_nagaku.html">一秒でも長く、君の中に</a></h3>
                         <p class="work-desc">
-                            【マツバ視点/射精我慢/スローセックス】秋の夜長。愛おしい妻・イヨリの中に一秒でも長く繋がっていたくて、マツバが狂おしいほどの射精の衝動を必死に堪えるお話。一往復6秒のスローピストンでGスポットやポルチオを的確に攻撃し、喘ぎ続けるイヨリと、理性を総動員して限界に挑むマツバ。最後はだいしゅきホールドで共に限界突破する、圧倒的な愛と快感の記録。約10,000字。※R-18
+                            【マツバ視点/射精我慢/スローセックス】秋の夜長。愛おしい妻・イヨリの中に一秒でも長く繋がっていたくて、マツバが狂おしいほどの射精の衝動を必死に堪えるお話。約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff1493; background: rgba(255, 20, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #ff1493; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="senaka_kara_dakishimete.html">背中から抱きしめて、蕩けるまで</a></h3>
                         <p class="work-desc">
-                            【背後密着/限界赤面/甘々いちゃらぶ】夏の終わりの熱帯夜。風呂上がりで無防備な浴衣姿のイヨリを、マツバが背後から密着するように抱きしめる。薄い布越しに、夫の硬く熱い「欲望」がお尻に直撃し、イヨリの顔は耳まで真っ赤に。わざと当てて焦らすSっ気たっぷりのマツバと、ポルチオまで攻め尽くされて限界突破するイヨリの、甘く熱い夜の記録。約10,000字。※R-18
+                            【背後密着/限界赤面/甘々いちゃらぶ】夏の終わりの熱帯夜。風呂上がりで無防備な浴衣姿のイヨリを、マツバが背後から密着するように抱きしめる。約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff1493; background: rgba(255, 20, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #ff1493; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="shinya_no_iyori_ronbun.html">特定パートナーに対する選択的性衝動の恒常的亢進に関する一考察</a></h3>
                         <p class="work-desc">
-                            【イヨリ視点/学術論文(?)】マツバとひと晩中激しく交わり、骨抜きにされてしまったイヨリ。事後のぽかぽかした布団の中で深夜テンションに任せて、夫・マツバの絶倫ぶりを「医学的・心理学的」に分析する論文（体位考察、キスマーク大量生産問題、「イけ」の声帯効果など）を執筆するが――。最初は真面目だった文体が、徐々にふにゃふにゃの「限界ノロケ」に崩壊していく全二万字論文。※R-18
+                            【イヨリ視点/学術論文(?)】マツバとひと晩中激しく交わり、骨抜きにされてしまったイヨリ。事後のぽかぽかした布団の中でマツバの絶倫ぶりを分析する。約20,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff1493; background: rgba(255, 20, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #ff1493; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="kogareru_toki_zenpen.html">焦がれる刻、蕩ける待宵【前編】</a>　/　<a
                                 href="kogareru_toki_kouhen.html">【後編】</a></h3>
                         <p class="work-desc">
-                            【三人称視点/Sっ気焦らし】朝、「今夜は朝までたっぷり愛させてくれ」と宣言したマツバ。一日中そわそわして夜の準備までするイヨリだったが、早めに帰宅したマツバは完璧な「いつも通りの夫」を演じて……！？
-                            膨れ上がる期待と焦燥。後編では一週間の我慢が爆発し、獣となったマツバの独占欲と限界突破したイヨリの身体が蕩け合う甘く熱い夜が描かれる。約15,000字。※後編はR-18
+                            【三人称視点/Sっ気焦らし】朝、「今夜は朝までたっぷり愛させてくれ」と宣言したマツバ。膨れ上がる期待と焦燥。獣となったマツバの独占欲。約15,000字. ※後編はR-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #db7093; background: rgba(219, 112, 147, 0.06);">
-                    <div class="work-status"
-                        style="background: #db7093; color: #fff; animation: pulse-new 2s infinite;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="kono_hito_no_naka_ni.html">この人の中に、還る</a></h3>
                         <p class="work-desc">
-                            イヨリ視点で描かれる、マツバへの全幅の信頼と絶頂の快感。マツバの大きな手に愛され、熱く硬い彼を迎え入れ、共に波に飲まれる幸福。「彼がくれる熱と愛で、自分の子宮が満たされていく感覚——」事後、彼の腕の中に収まった時に感じる至高の安らぎを描く、マツバ視点との完全対構造となる約10,000字。※R-18
+                            イヨリ視点で描かれる、マツバへの全幅の信頼と絶頂の快感。マツバの大きな手に愛され、熱く硬い彼を迎え入れる幸福。約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #4b0082; background: rgba(75, 0, 130, 0.06);">
-                    <div class="work-status" style="background: #4b0082; color: #fff;">NEW</div>
+                <article class="work-item">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="boku_dake_ga_shitteiru.html">僕だけが知っている</a></h3>
                         <p class="work-desc">
-                            マツバ視点で描かれる、濃厚で蜜のような甘い夜。指先から伝わるイヨリの肌の柔らかさ、挿入時の「熱い・きつい・柔らかい」という衝撃、そして7発分にも及ぶ中出しの強烈な快感覚を一人称で描き切る。「セックスの快感よりも、一番気持ちいいのは……」マツバの究極の愛のエゴイズムを覗き見る約10,000字。※R-18
+                            マツバ視点で描かれる、濃厚で蜜のような甘い夜。指先から伝わるイヨリの肌の柔らかさ、挿入時の強烈な快感覚を一人称で描き切る。約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #c71585; background: rgba(199, 21, 133, 0.06);">
-                    <div class="work-status" style="background: #c71585; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="saisho_kara_saigo.html">最初から最後まで甘いやつ</a></h3>
                         <p class="work-desc">
-                            トッポのチョコのように、最初から最後までたっぷりと蜜月が詰まった激甘×官能の夜。愛撫も交わりもホテル顔負けの「丁寧すぎるアフターケア」も、イヨリの体を愛し抜くことは全てマツバの「特権」。幸せにどっぷりと浸かる、愛と体液にまみれた約10,000字。※R-18
+                            最初から最後までたっぷりと蜜月が詰まった激甘×官能の夜。幸せにどっぷりと浸かる、愛と体液にまみれた約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #deb887; background: rgba(222, 184, 135, 0.06);">
-                    <div class="work-status" style="background: #deb887; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="iyori_no_kami.html">イヨリの髪は本当に綺麗ねぇ</a></h3>
                         <p class="work-desc">
-                            母が褒めてくれた髪を大切に手入れするイヨリと、その思い出を聞いて毎晩髪を乾かすことを日課にするマツバの、温かい日常の物語。同棲して半年が経った秋の初め。母から受け継がれた温もりが、マツバの手によって日々の安心へと繋がっていく心温まる約10,000字。
+                            母が褒めてくれた髪を大切に手入れするイヨリと、その思い出を聞いて毎晩髪を乾かすことを日課にするマツバの日常。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #483d8b; background: rgba(72, 61, 139, 0.06);">
-                    <div class="work-status" style="background: #483d8b; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="papa_no_koe.html">パパの声が聞こえた</a></h3>
                         <p class="work-desc">
-                            十二歳で経験した凄惨な事件——両親の死を夢に見てしまったイヨリ。パパの温もりを思い出し、マツバの腕の温もりすら恐ろしくなり、裸足で冬の夜道へ逃げ出してしまう。それを千里眼で見つけたマツバ。二人が抱える「過去の傷」と「温もり」の物語。シリアスで重厚な約10,000字。
+                            十二歳で経験した凄惨な事件を夢に見てしまったイヨリと、それを千里眼で見つけたマツバ。二人が抱える「傷」と「温もり」。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ffb7c5; background: rgba(255, 183, 197, 0.06);">
-                    <div class="work-status" style="background: #ffb7c5; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="tsuma_no_ibasho.html">妻の居場所は常に把握しています</a></h3>
                         <p class="work-desc">
-                            町内会伝説シリーズ第三弾。春の定例会で、マツバが「妻の居場所はリアルタイムで常に把握している。日に七回確認する」と堂々と宣言し、周囲にストーカーを疑われるパニックコメディ！
-                            その裏にある、イヨリの往診を見守るマツバの深い愛情が光る約10,000字。
+                            町内会伝説シリーズ第三弾。マツバが「妻の居場所はリアルタイムで常に把握している」と堂々と宣言するコメディ。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff7f50; background: rgba(255, 127, 80, 0.06);">
-                    <div class="work-status" style="background: #ff7f50; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="timing_concept.html">タイミングという概念がないんです</a></h3>
                         <p class="work-desc">
-                            町内会有名事件の第二弾。妊活でのタイミング法にプレッシャーを感じる男性陣の前で、マツバが「うちは毎晩やってるのでタイミングとか関係ないです」「妻の生理の周期は把握してます」と大惨事の爆弾を次々と投下！
-                            その後こたつでの甘いお誘いもある、コメディ＆糖度10000%の約10,000字。
+                            町内会有名事件の第二弾。マツバが「うちは毎晩やってるのでタイミングとか関係ないです」と爆弾を投下する爆笑コメディ。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ff6347; background: rgba(255, 99, 71, 0.06);">
-                    <div class="work-status" style="background: #ff6347; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="maiban_tsuma_wo.html">毎晩、妻を抱きしめて眠っています</a></h3>
                         <p class="work-desc">
-                            エンジュ北区町内会で「お二人とも淡泊そう」と言われたマツバが、「僕は毎晩イヨリを抱きしめて眠っています。休んだ日はありません」と百点の真顔で訂正し、町内会のおじちゃんおばちゃんを大パニックに陥れる爆笑コメディ！
-                            「腕の中の定位置」の完全スピンオフ。約10,000字。
+                            町内会で「お二人とも淡泊そう」と言われたマツバが、「僕は毎晩抱きしめて眠っています」と百点の真顔で訂正するコメディ。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #87cefa; background: rgba(135, 206, 250, 0.06);">
-                    <div class="work-status" style="background: #87cefa; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="ude_no_naka.html">腕の中の定位置</a></h3>
                         <p class="work-desc">
-                            マツバがイヨリを毎晩抱きしめて眠る話。最初は壊してしまいそうで触れられなかった夜から、出張の夜に枕を抱きしめて眠れない日を経て、「千日目」に腕を広げるまで。えっち描写一切なし、純粋な愛情と共依存的で温かい「眠りのかたち」だけを描ききった約10,000字。
+                            マツバがイヨリを毎晩抱きしめて眠る話。えっち描写一切なし、純粋な愛情と共依存的で温かい「眠りのかたち」。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #696969; background: rgba(105, 105, 105, 0.06);">
-                    <div class="work-status" style="background: #696969; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="kimi_ga_ikenaindayo.html">君がいけないんだよ</a></h3>
                         <p class="work-desc">
-                            イヨリのあらゆる仕草に欲情してしまうマツバの一人称独白録。朝の寝癖から出勤前の後ろ姿、食事の唇、くしゃみまで。「すまないホウオウ、僕にはイヨリがいるんだ」「僕は世界一幸福な変態だ」など、理性と本能の綱引きに敗北し続けるジムリーダーの約10,000字。
+                            イヨリのあらゆる仕草に欲情してしまうマツバの一人称独白録。理性と本能の綱引きに敗北し続けるジムリーダー。約10,000字。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #8a2be2; background: rgba(138, 43, 226, 0.06);">
-                    <div class="work-status" style="background: #8a2be2; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="tsukiyo_no_calendar.html">月夜のカレンダー</a></h3>
                         <p class="work-desc">
-                            マツバ家の、とある一ヶ月における夜のお誘いダイジェスト！「冷えるね」と遠回しに誘う日から、本を読みながら「抱いていい？」と直球で来る日、さらにはオキシトシンの半減期を語る知的誘惑まで。バリエーション豊かなお誘いパターンと、甘く熱い夫婦の日常を一気に書いた約10,000字。成人向け描写あり。
+                            マツバ家の、とある一ヶ月における夜のお誘いダイジェスト！バリエーション豊かなお誘いパターンを綴る約10,000字。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ffd700; background: rgba(255, 215, 0, 0.06);">
-                    <div class="work-status" style="background: #ffd700; color: #333;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="konya_karawa.html">今夜からは、何もいらない</a></h3>
-                        <p class="work-desc">
-                            出会って一年半でプロポーズ。二年目の記念日に入籍。「式が終わるまでは避妊しよう」と約束した二人の、挙式後の初夜。薄い隔たりが消えた瞬間の衝撃、直に繋がる感覚、初めての中出し——マツバとイヨリの「何もいらない夜」を描く、約10,000字の甘く熱い結婚初夜短編。成人向け描写あり。
-                        </p>
+                        <p class="work-desc">出会って二年目の記念日に入籍した二人の、挙式後の直に繋がる結婚初夜。約10,000字。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #ffb6c1; background: rgba(255, 182, 193, 0.06);">
-                    <div class="work-status" style="background: #ffb6c1; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="togireru_henji.html">途切れる返事と、溶ける敬語</a></h3>
-                        <p class="work-desc">
-                            「今日の煮付け、みりん多めにした？」「は、い……あっ♡」。えっちの最中に、料理の段取りや明日の往診スケジュールを質問してくるマツバ。「聞かれたら真面目に答える」という医師の矜持ゆえに、一生懸命答えようとして喘いでしまうイヨリ。マツバの「おしゃべり攻め」によって丁寧語が溶けていく、甘々いちゃらぶな約10,000字。成人向け描写あり。
-                        </p>
+                        <p class="work-desc">えっちの最中にマツバが質問責めにする「おしゃべり攻め」によって、イヨリの丁寧語が溶けていく一夜。約10,000字。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #2f4f4f; background: rgba(47, 79, 79, 0.06);">
-                    <div class="work-status" style="background: #2f4f4f; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="safe">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="garasu_no_nodobue.html">硝子の喉笛</a></h3>
-                        <p class="work-desc">
-                            イヨリを人質に取られたマツバが、千里眼で見えている暴力を「避けない」ことを選ぶ極限状況。流血、骨折、そして男たちの暴走。絶望の深淵で、イヨリが放った魂の悲鳴と、シンオウから連れ帰ったムクホークの翼が、二人の窮地を救う。約10,000字の緊迫・流血・愛重め短編。
-                        </p>
+                        <p class="work-desc">イヨリを人質に取られたマツバの極限状況と、シンオウから連れ帰ったムクホークの翼。純愛と暴力の約10,000字。</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #7b5ea7; background: rgba(123, 94, 167, 0.06);">
-                    <div class="work-status" style="background: #7b5ea7; color: #fff;">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="namida_no_arika.html">涙の在処を、僕は知らない</a></h3>
-                        <p class="work-desc">
-                            「これからの人生で、僕はどれだけ君の涙を止めることができるんだろう」——千里眼を持ちながら、一番近くにいるイヨリの涙の意味だけが見えない。深夜の悪夢、嘘と嘘が交差する朝食、雨の夜の告白。涙を止めることと、涙のそばにいることは違う。無力さを認めることが、もっとも深い信頼のかたちだと気づくまでの、マツバの一日。额と額を合わせて微笑むラストへ。成人向け描写あり。
-                        </p>
+                        <p class="work-desc">千里眼を持ちながら、一番近くにいる妻の涙の意味だけが見えないマツバの苦悩と信頼の物語。約10,000字。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #4a0033; background: #fff5f8;">
-                    <div class="work-status" style="background: #4a0033; color: #fff;">前後編</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-special">前後編</div>
                     <div class="work-info">
                         <h3><a href="shirayuri_yami_zenpen.html">白百合は闇に屈さず【前編】</a>　/　<a
                                 href="shirayuri_yami_kouhen.html">星屑の涙、清めの褥【後編】</a></h3>
-                        <p class="work-desc">
-                            イヨリのエロふわボディに三ヶ月間執着した配送員が、計画的に誘拐を実行。荷台の暗闘で服を脱がされかけるが、アステア・システムの緊急通報を受けたマツバが公式戦を降参し、ゲンガーと共に天井をブチ破って救出。後編では、汚された記憶をマツバの唇で「上書き」する優しすぎるお清めセックス。挿入中に「好き」が溢れて泣くイヨリと、「泣いていいよ」と全てを受け止めるマツバの甘く切ない一夜。
-                        </p>
+                        <p class="work-desc">誘拐事件から救出されたイヨリを、マツバが唇で「上書き」する優しすぎるお清めセックス。甘く切ない一夜。</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="yuusei_no_shitone.html">幽世の褥に、枷なき花が咲く</a></h3>
-                        <p class="work-desc">
-                            「修行で得た霊視や霊力、全部君をイかせるために使うよ」——。マツバの霊力によって魂だけを肉体から解き放たれ、幽世（かくりよ）の褥へと誘われたイヨリ。そこには事故の傷も、補助デバイスの枷もない、完全な姿の彼女が待っていた。両方の瞳で愛する夫を見つめ、自由な左足で「だいしゅきホールド」を繰り出す。肉体という境界を超え、魂の最奥までを暴き、溶け合わせる禁忌の秘術。
-                        </p>
+                        <p class="work-desc">マツバの霊力によって魂だけを肉体から解き放たれ、枷なき姿で溶け合わせる禁忌の秘術。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="kuchibiru_no_shito.html">唇の使徒は跪く</a></h3>
-                        <p class="work-desc">
-                            イヨリをトロトロに蕩けさせることに至上の喜びを感じるマツバは、長時間のクンニで四回の絶頂と潮吹きに導きながら、イヨリにフェラを絶対にさせない。「君は僕の女王だから跪かせたくない」——太腿の間から見上げるSっ気たっぷりの視線攻め、千里眼で見抜く最深の感度、そして快感には素直なのに不均衡が悔しいイヨリの甘い反撃宣言。跪く者こそ王である。
-                        </p>
+                        <p class="work-desc">長時間のクンニで蕩けさせながら、フェラを絶対にさせないマツバの「女王」への騎士道。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="nagame_no_kankin.html">長雨の日、獣は花を喰む</a></h3>
-                        <p class="work-desc">
-                            三日間の長雨。マツバはジムを休み、往診も転送し、イヨリを一日中ベッドに監禁した。白い肌を紅いキスマークの花畑に変えながら、何度も何度も絶頂に導く。「だいしゅき♡」の一言でスパダリの余裕が崩壊し、獣となったマツバの独占欲とイヨリのだいしゅきホールドが激突する、雨に閉ざされた甘い牢獄の記録。
-                        </p>
+                        <p class="work-desc">三日間の長雨。マツバがイヨリをベッドに監禁し、何度も何度も絶頂に導く。獣となった独占欲。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="gravure_to_mizugi.html">グラビアと水着と、僕の天使</a></h3>
-                        <p class="work-desc">
-                            知人からイヨリに似たグラビアアイドルの雑誌を渡されたマツバ。写真には全く興奮しなかったが、イヨリがあの水着を着たら……と妄想した瞬間、暴発。生理中のイヨリを抱けず、名前を呼びながら自慰に耽る。一方、雑誌を分析したイヨリは名探偵顔負けの推理を経て、秘密裏に深紅のハイレグビキニを注文。お預け明けの夜、マツバの理性は完全崩壊した。
-                        </p>
+                        <p class="work-desc">イヨリを思い自慰に耽るマツバと、秘密裏にハイレグビキニを注文したイヨリ. 理性が完全崩壊する夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="atarimae_no_koufuku.html">当たり前だと思っていた、この幸福</a></h3>
-                        <p class="work-desc">
-                            【イヨリ視点】マツバしか知らないイヨリは、丁寧な前戯も、何度もイかせてくれることも、甘い愛の囁きも、アフターケアも、全部「普通」だと思っていた。だが女子会で他の女性たちの愚痴を聞き、マツバの行為がいかに特別で、自分がいかに愛されているかを知る。涙と共に気づいた、当たり前じゃない幸福の物語。幸福度指数：測定不能（ERROR）。
-                        </p>
+                        <p class="work-desc">【イヨリ視点】女子会で他人の愚痴を聞き、自分の「当たり前」がいかに特別な幸福かに気づく物語。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="rotom_shiten.html">電脳は記録する、愛のオーバーヒート</a></h3>
-                        <p class="work-desc">
-                            【ロトム視点】アステア・システムに常駐するAIロトムが語る、イヨリのバイタルデータ解析ログ。「だいしゅきホールド」のためにデバイスを外さないイヨリのせいで、夜の営みが筒抜けに。摩擦係数の限界突破、冷却ファンの唸り、そして幸せなオーバーヒート。最新鋭の科学すら熱暴走させる二人の激しい愛の記録。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="bashamo_shiten.html">猛火の剣、鞘に納まる</a></h3>
-                        <p class="work-desc">
-                            【バシャーモ視点】10歳の旅立ちからイヨリを守り続けてきた最初の相棒。武人気質の彼は、イヨリが「戦士」としての鎧を脱ぎ、マツバの腕の中で無防備な「女」になる姿を目撃する。「飼われるだけの鳥になります」というイヨリの言葉に衝撃を受けつつも、それが彼女の選んだ幸福な「敗北」であることを悟る、熱く切ない物語。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="mumaji_shiten.html">妖魔は詠う、甘美な呪文</a></h3>
-                        <p class="work-desc">
-                            【ムウマージ視点】魔術師のような帽子を被り、呪文を詠唱うゴーストポケモンが語る「最強の言霊」。かつての冷徹な言葉は、今やイヨリを蕩かす甘美な呪文へと変わった。マツバの声を聞くだけで理性が溶け、絶頂へと誘われるイヨリ。永遠に解けない愛の呪いの中で、二人は幸せな牢獄の住人となる。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="roserade_shiten.html">薔薇は咲く、愛の滴を受けて</a></h3>
-                        <p class="work-desc">
-                            【ロズレイド視点】同棲時代にスボミーとして引き取られ、二人の愛を養分に育った「末っ子」。マツバの激しい愛撫を「園芸」に例え、イヨリの咲き誇る（絶頂）姿を羨望と喜びで見守る。甘く蕩ける嬌声と、アステア・システムの赤い点滅。氷のマツバを知らない世代だからこそ語れる、純度100%の溺愛の記録。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="fuwaride_shiten.html">気球は知る、重すぎる愛の引力</a></h3>
-                        <p class="work-desc">
-                            【フワライド視点】風に乗って彷徨う気球ポケモンが語る、マツバの「重力」のような執着。かつて空を見ていた男は今、腕の中の妻だけを見つめている。左腕のアステア・システムが赤く点滅するほどの激しい愛欲と、それに溺れるイヨリの甘い姿。魂を運ぶ風ですら引き離せない、二人の絶対的な結合。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="bariyado_shiten.html">道化師は祈る、愛娘の溺愛</a></h3>
-                        <p class="work-desc">
-                            【バリヤード視点】亡き母イノリに代わり、イヨリを赤子の頃から育て上げた家政婦ポケモンの困惑と安堵。得意の「見えない壁」すら貫通するマツバの愛の熱量と、毎夜甘く蕩けていく愛娘の嬌声。激しい営みと事後の聖水洗濯にため息をつきつつも、娘の幸せを願う温かい目線の物語。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="yonowaru_shiten.html">黄泉の使者が見た、愛という名の枷</a></h3>
-                        <p class="work-desc">
-                            【ヨノワール視点】現世と霊界を行き来する魂の監視者が語る、マツバの「重力」のような愛。かつて空を見ていた男は今、一人の女性を物理的にも魂レベルでも縛り付けている。左腕に嵌められたアステア・システムが生命維持装置のように明滅する中、死んでも離さないという誓いが、甘く重たい鎖となって二人を繋ぐ。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="mukuhawk_shiten.html">忠義の猛禽、禁忌の夜</a></h3>
-                        <p class="work-desc">
-                            【ムクホーク視点】イヨリの悲鳴に呼応して飛び出す特殊任務を課された「お庭番」。だが深夜の悲鳴は敵襲ではなく、最愛の夫による激しい寵愛の証だった。「マツバには絶対に手出し無用」という厳命と、主の身を案じる忠誠心の間で揺れながら、猛禽の騎士は動けないまま熱帯夜の目撃者となる。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="genga_shiten.html">陰の王が嗤う、歪な寵愛</a></h3>
-                        <p class="work-desc">
-                            【ゲンガー視点】マツバの影に潜む最古の相棒が語る、主の変貌と本質。かつて「虹色の羽」を求めていた焦燥感は、イヨリという「壊れた人形」への異常な執着へと形を変えた。影の中から見せつけられる、呪いのように重く、底なし沼のように深い性愛の記録。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="todozeruga_shiten.html">怠惰なる海王の観測</a></h3>
-                        <p class="work-desc">
-                            【トドゼルガ視点】イヨリのパートナーにして「動かざること山の如し」を体現する怠惰な海獣の王。暖炉の前で溶けていたいのに、隣室から聞こえる金髪の男と主の甘く激しい声に睡眠を妨害される日々。性行為を「無駄なエネルギー浪費」と断じつつも、生真面目な主が蕩かされていく様を（動かずに）観察する、呆れと少しの羨望の物語。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="yukimenoko_shiten.html">雪の愛娘が見た、氷解の熱</a></h3>
-                        <p class="work-desc">
-                            【ユキメノコ視点】女に一切興味がなかった「氷の檻」の住人マツバが、イヨリの出現によってどう壊れ、どう再生したか。古参のパートナーポケモンが天井裏から観察する、冷徹なジムリーダーが「絶倫の愛妻家」へと変貌する過程と、毎晩繰り広げられる甘く激しい情事の記録。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="safe sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="shinkon_soudonki.html">新婚七夜、エンジュ騒動記</a></h3>
-                        <p class="work-desc">
-                            【新婚えちえちコメディ】結婚一週間で計23回。デボンコーポレーションの最新デバイスを搭載しても腰がふにゃふにゃのイヨリを見た商店街のおかみさん連中が「ジムリーダーは相当お盛んらしい」と噂し、ついにマツバの両親の耳にまで届く。父の「週二回にしとけ」に絶望するマツバと、往診カバンのマタニティマークが全てを解決するハートフルコメディ。
-                        </p>
+                        <p class="work-desc">結婚一週間で23回抱いたことが町内会で噂になり、両親まで届く新婚えちえちコメディ。</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="itako_chugen.html">イタコ衆の忠言、夜の反省文</a></h3>
-                        <p class="work-desc">
-                            【コメディ×甘々えっち前後編】愛妻弁当を届けに来たイヨリの歩き方から「昨晩の激しさ」を看破した高齢イタコ衆に、「手加減してやれ」とお説教されるマツバ。赤面正座で反省したはずが、その夜もイヨリが可愛すぎて結局三回抱いてしまう。対面座位→スプーン→正常位（足上げ）の三幕構成。一応、手加減はした。
-                        </p>
+                        <p class="work-desc">高齢イタコ衆にお説教されたマツバが、反省したはずが結局三回抱いてしまう甘々えっちコメディ。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="himitsu_hanazono.html">秘密の花園、蜜月の夜に</a></h3>
-                        <p class="work-desc">
-                            【感度良好×前戯の鬼×独占欲】マツバの「大事にする」は、常軌を逸している。髪を乾かすところから始まる長い長い前戯、秘密の花園に顔を埋めて蜜を吸い尽くす夜の礼拝、そしてイヨリだけに向けられる底なしの独占欲。トロトロに蕩かされた愛妻の、世界一可愛い顔を独り占めにする物語。
-                        </p>
+                        <p class="work-desc">長い長い前戯、蜜を吸い尽くす礼拝、イヨリだけに向けられる底なしの独占欲。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="biyaku_junai.html">毒蛾の誘惑、百合だけを灼く</a></h3>
+                        <p class="work-desc">媚薬を盛られたマツバが、他人の目の前でイヨリへの愛を証明する、狂おしいほどの純愛。※R-18</p>
+                    </div>
+                </article>
+
+                <article class="work-item card-secret-diary" data-genre="safe">
+                    <div class="work-status status-secret">SECRET</div>
+                    <div class="work-info">
+                        <h3><a href="matsuba_secret_diary.html">【閲覧注意】マツバの手記：イヨリ開発日記</a></h3>
                         <p class="work-desc">
-                            【媚薬×純愛×見せつけ】若い女トレーナーに媚薬を盛られたマツバ。全身が燃えているのに、彼の身体はイヨリ以外の女を一切認識しない。たまたまジムを訪れた愛妻を、女の目の前で抱く――恋人繋ぎと深い口づけで綴る、狂おしいほどの純愛の証明。
+                            ※このファイルはマツバのPCから流出した極秘データです。イヨリへの歪んだ愛、独占欲、転生前からの執着の記録。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item" style="border: 2px solid #8b0000; background: #fff0f0;">
-                    <div class="work-status" style="background: #8b0000; color: #fff;">SECRET</div>
-                    <div class="work-info">
-                        <h3><a href="matsuba_secret_diary.html"
-                                style="color: #8b0000; font-weight:bold;">【閲覧注意】マツバの手記：イヨリ開発日記</a></h3>
-                        <p class="work-desc" style="color:#550000;">
-                            ※このファイルはマツバのPCから流出した極秘データです。イヨリへの歪んだ愛、独占欲、転生前からの執着の記録が記されています。本人の目に触れた場合、物理的に破滅します。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
-                    <div class="work-info">
-                        <h3><a href="observer_log.html">観察者の受難：ポケモンたちは眠れない</a></h3>
-                        <p class="work-desc">
-                            【ポケモン視点特別編】マツバとイヨリの、あまりに激しく濃厚な情事。その裏で、影から、端末から、そして襖の外から見守る（あるいは呆れる）ポケモンたちの受難を描いた異色作。ゲンガー、ロトム、ユキメノコ、バシャーモの目に映る二人の愛とは。
-                        </p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item" style="border: 2px solid #ffd700; background: #fffaf0;">
-                    <div class="work-status" style="background: #ffd700; color: #b8860b;">SPECIAL</div>
-                    <div class="work-info">
-                        <h3><a href="amae_jozu_funya_hime.html" style="color: #d87093;">【祝・逃げ若完結】甘え上手のふにゃ姫</a></h3>
-                        <p class="work-desc">「逃げ上手の若君」完結記念パロディ。乱世を「逃げ」で生き抜いた英雄に対し、イヨリは「甘え」でマツバの愛（と理性）を攻略する！
-                            ふにゃふにゃ王国特別仕様でお届けする激甘えちえちの生存戦略。</p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="kage_tsunagi_uso.html">影繋ぎの夜に、嘘をひとつ</a></h3>
-                        <p class="work-desc">
-                            停電の夜、ゲンガーの悪戯で影を繋がれた二人。術が解けていることに互いに気づきながら、離れたくなくて嘘をつき続ける。蝋燭一本の灯りの下で交わされた、甘く官能的な一夜の物語。</p>
+                        <p class="work-desc">停電の夜、ゲンガーの悪戯で影を繋がれた二人. 離れたくなくて嘘をつき続ける、蝋燭一本の甘い物語。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="hana_yori_akaku.html">華より紅く咲き乱れ</a></h3>
-                        <p class="work-desc">
-                            聡明なポケモンドクターの新妻イヨリが、人生初の深紅の勝負ランジェリーを購入。F65の華奢な身体に薔薇のレースを纏い、マツバの前で華より紅く四度咲き乱れる。</p>
+                        <p class="work-desc">人生初の深紅の勝負ランジェリーを纏い、マツバの前で華より紅く四度咲き乱れる一夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="takuhai_kouhen.html">玄関先の罪と罰【後編】</a></h3>
-                        <p class="work-desc">
-                            宅配員に無自覚にえちえちな姿を見られた新妻イヨリ。帰宅したマツバの穏やかな嫉妬が、甘い独占欲となって二人を包む。「僕だけのもの」を確かめる甘々いちゃらぶえっち。</p>
+                        <p class="work-desc">宅配員に姿を見られた失態。帰宅したマツバの穏やかな嫉妬と、深い独占欲の甘々いちゃらぶ。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="safe">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="takuhai_zenpen.html">玄関先の罪と罰【前編】</a></h3>
-                        <p class="work-desc">宅配員・安西竜也の視点で描く、新妻イヨリの無自覚な色気。ブラなしスウェット、短すぎるショートパンツ、前かがみの谷間。みかんだけが救いの午後二時。
+                        <p class="work-desc">宅配員の視点で描く、新妻イヨリの無自覚な色気。ブラなしスウェット、短すぎる部屋着の午後。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="niizuma_koufuku.html">まだ慣れない、という幸福</a></h3>
-                        <p class="work-desc">結婚二週間の新妻イヨリ。マツバのシャツを着てキッチンに立つ朝、指輪が触れ合う音が三度響く。可愛くて存外えっちな新妻を溺愛する甘々の朝。</p>
+                        <p class="work-desc">マツバのシャツを着た新妻イヨリを溺愛する、甘々の朝。指輪が触れ合う音が三度響く。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="oazuke_oboreru.html">おあずけの果て、溺れるまで</a></h3>
-                        <p class="work-desc">三度の寸止めで限界まで焦らされたイヨリが、「イっていいよ」の六文字で堰を切ったように六回連続絶頂する、甘い地獄のいちゃらぶ。</p>
+                        <p class="work-desc">寸止めで限界まで焦らされたイヨリが、一気に六回連続絶頂する甘い地獄の記録。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="shinshi_kamen.html">紳士の仮面が剥がれる夜</a></h3>
-                        <p class="work-desc">紳士でいたいマツバの理性が、イヨリの無意識の煽りで崩壊。激しめの二回戦と、実はイヨリがわざとやっていたという甘い逆転劇。</p>
+                        <p class="work-desc">理性が崩壊したマツバの激しめの二回戦と、イヨリによる甘い逆転劇。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">NEW</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="yoake_nandodemo.html">夜が明けるまで、何度でも</a></h3>
-                        <p class="work-desc">左目と左足に後遺症を抱えるイヨリを、休憩を挟みながら夜明けまで四度抱く。二つの傷を守り続けるマツバの手と、朝日の中の「おはよう」。</p>
+                        <p class="work-desc">左目と左足の後遺症を抱えるイヨリを、夜明けまで四度抱く。傷を愛し続けるマツバの手。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
                 <article class="work-item">
-                    <div class="work-status">NEW</div>
+                    <div class="work-status status-new">NEW</div>
                     <div class="work-info">
                         <h3><a href="yubi_saki.html">途切れることのない指先</a></h3>
-                        <p class="work-desc">底なしの欲望を抱えながらも、イヨリの左足の異変に気づいて躊躇なく中断するマツバ。欲と愛の狭間で紡がれる、究極の甘々いちゃらぶ。</p>
+                        <p class="work-desc">底なしの欲望と、主の異変に即座に反応する深い愛。欲と愛の狭間で紡がれる甘々いちゃらぶ。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="fuyu_shirahata.html">冬将軍に白旗を</a></h3>
-                        <p class="work-desc">最強寒波の夜、ミナモシティ出身で底冷えに弱いイヨリを、マツバが人肌と精で内側から温める甘々いちゃらぶ中出しえっち。三回戦。</p>
+                        <p class="work-desc">最強寒波の夜、内側から温める甘々いちゃらぶ中出しえっち。三回戦。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="yoru_hoshuu.html">夜の補習、朝まで教壇</a></h3>
-                        <p class="work-desc">歴史教師マツバと女学生イヨリのロールプレイ。エンジュの歴史クイズから保健体育の実技試験に発展する、甘々いちゃらぶの夜。</p>
+                        <p class="work-desc">教師マツバと学生イヨリのロールプレイ。保健体育の実技試験へ発展する甘々の夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="maotoko_majo.html">魔男の夜、魔女は蕩ける</a></h3>
-                        <p class="work-desc">魔女コスのイヨリと魔男を名乗るマツバのえっちな魔法ロールプレイ。感覚増幅、静寂、服従、永遠の愛。四つの魔法が紡ぐ甘々いちゃらぶの夜。</p>
+                        <p class="work-desc">魔女コスのイヨリと魔男を名乗るマツバの魔法ロールプレイ. 服従と永遠の愛。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="maid_service.html">ご主人様の、ためだけに</a></h3>
-                        <p class="work-desc">ロンスカメイド服に身を包んだイヨリによる、可愛らしいお口とわがままな果実でのご奉仕。清楚で甘々ないちゃらぶの夜。</p>
+                        <p class="work-desc">メイド服に身を包んだイヨリによる、愛らしいご奉仕。清楚で甘々ないちゃらぶの夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="senrigan_neko_2.html">千里眼は猫に焦がれる【後編】</a></h3>
-                        <p class="work-desc">猫コスに身を包んだイヨリと、理性崩壊したマツバの甘々いちゃらぶえっち。鈴の音と喘ぎ声が重なる、止まらない絶頂の夜。</p>
+                        <p class="work-desc">猫コスに身を包んだイヨリと、理性崩壊したマツバの甘々いちゃらぶ。止まらない絶頂。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="safe sweet">
                     <div class="work-info">
                         <h3><a href="senrigan_neko.html">千里眼は猫の夢を見るか【前編】</a></h3>
-                        <p class="work-desc">事務員の息子が書いたなろう系小説を真面目に読んだマツバが、猫耳コスプレに目覚め、こっそりネット通販で子猫の衣装を注文するまでの一万字級コメディ。
+                        <p class="work-desc">猫耳コスプレに目覚め、こっそり衣装を注文するまでのマツバを描いたコメディ。
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="inori_hoshi.html">祈りの娘に、星を降らせる</a></h3>
-                        <p class="work-desc">亡き両親と遠方の兄の愛情を知ったマツバが、改めてイヨリを誰よりも大切にしようと誓いながら、それでも愛さずにはいられない夜。</p>
+                        <p class="work-desc">亡き両親と遠方の兄の愛情を知ったマツバが、改めてイヨリを大切にしようと誓う夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
                 <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="suiryoku_yakuin.html">翠緑の灼印</a></h3>
-                        <p class="work-desc">嫉妬したマツバによる、逃げ場のない弱点攻め。頸、胸、鼠蹊部……星座のように刻まれる独占の印と、甘く愛らしい喘ぎの夜。</p>
+                        <p class="work-desc">嫉妬したマツバによる弱点攻め。星座のように刻まれる独占の印。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status">HOT</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-hot">HOT</div>
                     <div class="work-info">
                         <h3><a href="jealousy_honey.html">独占の蜜、嫉妬の花</a></h3>
-                        <p class="work-desc">「イヨリだけだよ」。ヒマリに拗ねた妻を、言葉と体で満たし尽くす、独占宣言の夜。</p>
+                        <p class="work-desc">「イヨリだけだよ」。ヒマリに嫉妬した妻を、言葉と体で満たし尽くす。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="gym_leader_gap.html">覇者の残像、蕩ける花</a></h3>
-                        <p class="work-desc">ジムリーダーとしての夫の姿に見惚れたイヨリの、止まらない潮吹きと絶頂の夜。覇者の仮面が砕ける時。</p>
+                        <p class="work-desc">ジムリーダーとしての姿に見惚れたイヨリ。止まらない絶頂の夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="forbidden_blood.html">血よりも深く、罪よりも甘く</a></h3>
-                        <p class="work-desc">実の兄妹だと信じる二人の、禁断の愛。嫌妖が燃え上がる夜、理性の堰が壊れる。二人だけが知らない真実。</p>
+                        <p class="work-desc">禁断の愛と、理性の決壊。二人だけが知らない真実。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="ronpa_dialectic.html">論破と蕩解の弁証法</a></h3>
-                        <p class="work-desc">「屁理屈という言葉を使う人に限って」。論理の女王が、愛する夫の前で完全敗北する夜。</p>
+                        <p class="work-desc">論理の女王が、愛する夫の前で完全敗北する夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="sexual_flood.html">理性の決壊、愛欲の洪水</a></h3>
-                        <p class="work-desc">導入から激しい描写で駆け抜ける、マツイヨ史上最も淫らな愛の衝動。</p>
+                        <p class="work-desc">マツイヨ史上最も淫らな愛の衝動。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="hizamakura_mimikaki.html">陽だまりの膝枕、蜜の囁き</a></h3>
-                        <p class="work-desc">休日の縁側、膝枕耳かきから始まる甘い情事。下から見上げる絶景と、平穏を突き破るマツバの劣情。</p>
+                        <p class="work-desc">休日の縁側、膝枕耳かきから始まる甘い情事。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="boyfriend_shirt.html">残り香の聖衣</a></h3>
-                        <p class="work-desc">「マツバさんの匂いがして、安心します……」。彼シャツ一枚のイヨリに、理性を蒸発させられたマツバの甘々いちゃらぶ。</p>
+                        <p class="work-desc">彼シャツ一枚のイヨリに、理性を蒸発させられたマツバ。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
                 <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="mirror_embrace.html">鏡像の抱擁、あるいは消失</a></h3>
-                        <p class="work-desc">176cmの男にすっぽりと覆われる156cmの女。鏡越しに見せつけられる「侵略」と「消失」の視覚的悦楽。</p>
+                        <p class="work-desc">鏡越しに見せつけられる「侵略」と「消失」の視覚的悦楽。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
-                        <h3><a href="hakui_to_mitsushitsu.html">純白の規律、深紅の渇望</a></h3>
-                        <p class="work-desc">昼は聡明な医者、夜は淫らな愛玩。白衣を脱ぎ捨てたイヨリに、余裕をなくしたマツバが牙を剥く。甘イキと♡喘ぎが止まらない、いちゃらぶ蜜月夜。</p>
+                        <h3><a href="hakui_to_mitsushitsu.html">純白の規律、深紅의 渇望</a></h3>
+                        <p class="work-desc">白衣を脱ぎ捨てたイヨリに、余裕をなくしたマツバが牙を剥く。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="portio_kiss.html">深淵の口づけ</a></h3>
-                        <p class="work-desc">子宮口が下りてきて、亀頭と「キス」するように繋がる。究極の一体感がもたらす、深い深い絶頂。</p>
+                        <p class="work-desc">子宮口が下りてきて、亀頭と「キス」するように繋がる究極の一体感。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18 sweet">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="taikakusa_ecchi.html">大きな檫と小さな花</a></h3>
-                        <p class="work-desc">176cmと156cm。30kgの体格差が生み出す、包容と支配の悦楽。大きな男に抱かれる、小さな女の幸福。</p>
+                        <p class="work-desc">176cmと156cm。体格差が生み出す、包容と支配の悦楽。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="mangetsu_tanemaki.html">満月の種蒔き</a></h3>
                         <p class="work-desc">
-                            排卵日を狙った、三度の種付け。一ヶ月後、自身の体調変化から芽吹きを確信するイヨリ。だが彼女は告白を「お預け」にし、二ヶ月目の確定診断でマツバを驚かせることを選ぶ。秘密を孕む新妻の、背徳的で幸福な一ヶ月。
+                            排卵日を狙った三度の種付け。秘密を孕む新妻の、背徳的で幸福な一ヶ月。※R-18
                         </p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="mitsuki_weakness.html">蜜月の弱点責め</a></h3>
-                        <p class="work-desc">絶倉夫マツバが、愛する妻の弱点を執拗に責め立てる。甘イキと潮吹きが止まらない、濃密な蜜月の夜。</p>
+                        <p class="work-desc">絶倫夫マツバが、妻の弱点を執拗に責め立てる濃厚な夜。※R-18</p>
                     </div>
                 </article>
-                <div class="log-divider"></div>
 
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
-                    <div class="work-info">
-                        <h3><a href="hoshi_no_shirabe.html">星屑の調べ：花開く夜の悦楽</a></h3>
-                        <p class="work-desc">古都エンジュの静寂の中、マツバの千里眼に暴かれ、蹂躙されるイヨリ。星と花が交わり、溶け合う夜の記録。</p>
-                    </div>
-                </article>
-                <div class="log-divider"></div>
-
-                <article class="work-item">
-                    <div class="work-status completed">COMPLETED</div>
+                <article class="work-item" data-genre="r18">
+                    <div class="work-status status-completed">COMPLETED</div>
                     <div class="work-info">
                         <h3><a href="astral_lily.html">アストラル・リリィ</a></h3>
-                        <p class="work-desc">若き日の二人が、初めて結ばれた夜の追憶。純白の百合が星屑に染まる。</p>
+                        <p class="work-desc">若き日の二人が初めて結ばれた夜の追憶。※R-18</p>
                     </div>
                 </article>
             </div>
@@ -892,26 +892,69 @@
     <div class="snow-container"></div>
     <script>
         const snowContainer = document.querySelector('.snow-container');
-        const count = 30;
-        for (let i = 0; i < count; i++) {
+        const colors = ['#f2c057', '#f19eb5', '#95d5e2', '#aed581', '#d1c4e9', '#fff8e1'];
+        for (let i = 0; i < 40; i++) {
             const petal = document.createElement('div');
             petal.className = 'snow';
             petal.style.left = Math.random() * 100 + 'vw';
             petal.style.top = Math.random() * -100 + 'vh';
-            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
-            petal.style.animationDelay = Math.random() * 5 + 's';
+            const duration = Math.random() * 8 + 8;
+            petal.style.animationDuration = duration + 's';
+            petal.style.animationDelay = Math.random() * duration + 's';
             petal.style.opacity = Math.random() * 0.5 + 0.2;
-            const size = Math.random() * 10 + 5;
+            const size = Math.random() * 5 + 3;
             petal.style.width = size + 'px';
-            petal.style.height = size * 1.5 + 'px';
-            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            petal.style.height = size + 'px';
+            petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+            petal.style.boxShadow = `0 0 10px ${petal.style.background}`;
             snowContainer.appendChild(petal);
         }
 
         document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
             document.querySelector('.background-overlay').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+
+        // Search and Filter Logic
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+
+        function filterWorks() {
+            const searchText = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+            workItems.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const desc = item.querySelector('.work-desc') ? item.querySelector('.work-desc').textContent.toLowerCase() : "";
+                const genres = item.dataset.genre ? item.dataset.genre.split(' ') : [];
+                
+                const matchesSearch = title.includes(searchText) || desc.includes(searchText);
+                const matchesFilter = activeFilter === 'all' || genres.includes(activeFilter);
+
+                if (matchesSearch && matchesFilter) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Hide empty sections (optional but cleaner)
+            document.querySelectorAll('.series-section').forEach(section => {
+                const visibleItems = section.querySelectorAll('.work-item:not(.hidden)');
+                section.style.display = visibleItems.length > 0 ? 'block' : 'none';
+            });
+        }
+
+        searchInput.addEventListener('input', filterWorks);
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterWorks();
+            });
         });
     </script>
 </body>

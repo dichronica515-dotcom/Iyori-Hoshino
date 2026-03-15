@@ -4,228 +4,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星埜イヨリ (ほしのいより)とは【ピクシブ百科事典】 - 星と花の小夜曲</title>
+    <title>星埜イヨリ | Private Wiki - ハーブティーと金平糖</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍵</text></svg>">
     <style>
-        .pixiv-container {
-            background-color: #fff;
-            color: #333;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-family: sans-serif;
-            border: 1px solid #ddd;
+        .wiki-container {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-main);
         }
 
-        .pixiv-header {
-            border-bottom: 2px solid #0096fa;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+        .wiki-header {
+            border-bottom: 1px solid var(--konpeito-gold);
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
         }
 
-        .pixiv-header h1 {
-            font-size: 24px;
+        .wiki-header h1 {
+            font-size: 2.2rem;
             margin: 0;
-            color: #333;
-            text-align: left;
-        }
-
-        .pixiv-header .ruby {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
+            color: var(--text-main);
+            letter-spacing: 0.1rem;
+            font-weight: 400;
         }
 
         .infobox {
             float: right;
-            width: 300px;
-            border: 1px solid #ddd;
-            margin-left: 20px;
-            background: #f9f9f9;
+            width: 280px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+            padding: 1px;
         }
 
         .infobox table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 0.85rem;
         }
 
-        .infobox th,
-        .infobox td {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
+        .infobox th, .infobox td {
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
         }
 
         .infobox th {
-            background: #eee;
-            width: 80px;
+            background: rgba(201, 166, 107, 0.05);
+            color: var(--konpeito-gold);
+            width: 90px;
+            font-weight: normal;
         }
 
         .content-body h2 {
-            font-size: 20px;
-            border-left: 4px solid #0096fa;
-            padding-left: 10px;
-            margin-top: 30px;
-            background: #f4f4f4;
-            line-height: 2;
-            text-align: left;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--konpeito-gold);
+            font-weight: 400;
         }
 
         .content-body p {
-            line-height: 1.6;
-            margin-bottom: 1.2em;
-            text-align: left;
-        }
-
-        .pixiv-nav {
-            background: #f0f7ff;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            text-align: left;
-        }
-
-        .pixiv-nav a {
-            color: #0096fa;
-            text-decoration: none;
+            line-height: 2.2;
+            margin-bottom: 2rem;
+            text-align: justify;
         }
 
         .tag-list {
-            margin-top: 40px;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-            font-size: 12px;
-            color: #666;
-            text-align: left;
+            margin-top: 5rem;
+            border-top: 1px dashed var(--glass-border);
+            padding-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .tag-list span {
-            display: inline-block;
-            background: #eee;
-            padding: 2px 8px;
-            margin: 2px;
-            border-radius: 2px;
+            font-size: 0.75rem;
+            color: var(--tea-leaf);
+            opacity: 0.8;
         }
 
-        body {
-            background: #f0f2f5 !important;
+        .tag-list span::before {
+            content: '#';
         }
 
-        @media (max-width: 600px) {
-            .pixiv-container {
-                padding: 10px;
-                margin: 10px;
-            }
-
+        @media (max-width: 768px) {
             .infobox {
                 float: none;
                 width: 100%;
                 margin-left: 0;
-                margin-bottom: 20px;
-            }
-
-            .pixiv-header h1 {
-                font-size: 20px;
-            }
-
-            .content-body h2 {
-                font-size: 18px;
-            }
-
-            .content-body p {
-                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="background-overlay" style="opacity: 0.1;"></div>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
 
-    <header style="background: #0096fa; padding: 2rem 1rem;">
-        <div class="subtitle" style="color: #fff; text-align: left;">pikishibu - 創作文化の百科事典</div>
-        <nav class="nav-links" style="justify-content: flex-start;">
-            <a href="index.html" style="color: #fff;">TOP</a>
-            <a href="character.html" style="color: #fff;">CHARACTER</a>
-            <a href="list.html" style="color: #fff;">ARCHIVE</a>
-            <a href="iyori_dic.html" style="color: #fff;">WIKI</a>
+    <header>
+        <div class="subtitle">Private Archive / Wiki</div>
+        <h1>聖域の覚書</h1>
+        <div class="subtitle-japanese">― 星埜イヨリ 個体記録 ―</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="list.html">Archive</a>
+            <a href="iyori_dic.html">Wiki</a>
         </nav>
     </header>
 
     <main>
-        <div class="pixiv-container">
-            <div class="pixiv-header">
-                <div class="ruby">ほしのいより</div>
-                <h1>星埜イヨリ</h1>
-            </div>
-
-            <div class="pixiv-nav">
-                <a href="#">pixiv</a> &gt; <a href="#">百科事典</a> &gt; <a href="#">キャラクター</a> &gt; 星埜イヨリ
-            </div>
-
-            <div class="infobox">
-                <div style="padding: 10px; text-align: center; border-bottom: 1px solid #ddd;">
-                    <strong style="color: #ff3366;">R-18設定</strong>
+        <div class="portal-container">
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 0.75rem; color: var(--konpeito-gold); letter-spacing: 0.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">Observation Node: IYORI</div>
+                    <h1>星埜 イヨリ</h1>
                 </div>
-                <table>
-                    <tr>
-                        <th>誕生日</th>
-                        <td>4月4日</td>
-                    </tr>
-                    <tr>
-                        <th>年齢</th>
-                        <td>24歳</td>
-                    </tr>
-                    <tr>
-                        <th>職業</th>
-                        <td>ポケモンドクター</td>
-                    </tr>
-                    <tr>
-                        <th>身長</th>
-                        <td>152cm</td>
-                    </tr>
-                    <tr>
-                        <th>配偶者</th>
-                        <td><a href="character.html">マツバ</a></td>
-                    </tr>
-                </table>
-            </div>
 
-            <div class="content-body">
-                <p>
-                    <strong>星埜イヨリ</strong>とは、二次創作企画『星と花の小夜曲』に登場するオリジナルキャラクター、およびヒロインである。
-                </p>
+                <div class="infobox">
+                    <div style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--glass-border);">
+                        <strong style="color: var(--konpeito-gold); font-size: 0.7rem; letter-spacing: 0.2rem;">CLASSIFIED</strong>
+                    </div>
+                    <table>
+                        <tr><th>誕生日</th><td>4月4日</td></tr>
+                        <tr><th>年齢</th><td>24歳</td></tr>
+                        <tr><th>職業</th><td>ポケモンドクター</td></tr>
+                        <tr><th>身長</th><td>156cm</td></tr>
+                        <tr><th>配偶者</th><td>マツバ</td></tr>
+                    </table>
+                </div>
 
-                <h2>概要</h2>
-                <p>
-                    ホウエン地方のミナモシティからエンジュシティへと赴任してきたポケモンドクター。清潔感のある白衣を身に纏い、常に穏やかな微笑みを絶やさない。
-                </p>
-                <p>
-                    一、二年前の不慮の事故により左目の視機能と左足の自由を失っており、自らも開発に参画した腕輪型の次世代医療デバイスを使用して生活している。この身体的欠損と、それを最先端技術で補いながら生きる強さが、彼女のキャラクター性の核心となっている。
-                </p>
+                <div class="content-body">
+                    <p><strong>星埜イヨリ</strong>は、創作『ハーブティーと金平糖』における主要登場人物であり、マツバの伴侶である。</p>
 
-                <h2>人物・性格</h2>
-                <p>
-                    献身的な性格で医師としての腕は確か。夫であるマツバに対しては異常なまでの執着を見せる。「すべてを視通されている」という状況に悦楽を感じる重度の「性依存」という側面を持つ。
-                </p>
-                <p>
-                    理知的な態度が崩壊していく様子は高い人気を博しており、絶頂の果てに到達する深層心理の理想郷「<a
-                        href="funya_kingdom.html">ふにゃふにゃ王国</a>」の設定は語り草となっている。
-                </p>
+                    <h2>概要</h2>
+                    <p>ホウエン地方ミナモシティ出身。現在はジョウト地方エンジュシティにてポケモンドクターとして勤務。清潔感のある白衣と、ハーブティーのように穏やかな微笑みが特徴だが、その内側には激しい情動を秘めている。</p>
+                    <p>数年前の事故により負った身体的欠損を、医療デバイス『アステア・システム』で補完しながら生きる。その「完全ではない身体」が、マツバの千里眼による支配・愛護欲をより一層掻き立てる要因となっている。</p>
 
-                <div class="tag-list">
-                    <span>星と花の小夜曲</span> <span>マツバ</span> <span>イヨリ</span> <span>ポケモンドクター</span> <span>R-18</span>
+                    <h2>人物・性格</h2>
+                    <p>献身的で理知的な医師としての顔を持つ傍ら、マツバに対しては「すべてを視通されたい」という強烈な依存心を持つ。彼に暴かれ、愛されることでのみ埋まる心の空洞があり、二人きりの時間にはその蕩けきった本能を露わにする。</p>
+                    <p>マツバから贈られた金平糖の瓶は、彼女にとって「愛の証」であり、精神的な支柱の一つ。極限の悦楽に達した際には、現実の苦しみを忘れた「ふにゃふにゃ王国」という精神的理想郷へと誘われることもある。</p>
+
+                    <div class="tag-list">
+                        <span>ハーブティーと金平糖</span> <span>マツバ×イヨリ</span> <span>ポケモンドクター</span> <span>R-18</span> <span>ふにゃふにゃ王国</span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer style="text-align: left; padding: 2rem 1rem;">
-        &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
+    <footer>
+        &copy; 2026 HERB TEA & KONPEITO / CREATED BY SATOH MISAKI.
     </footer>
+
+    <div class="snow-container"></div>
+    <script>
+        const snowContainer = document.querySelector('.snow-container');
+        const colors = ['#c9a66b', '#d994a5', '#92c9d0', '#e8eef0'];
+        for (let i = 0; i < 30; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'snow';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.top = Math.random() * -100 + 'vh';
+            const size = Math.random() * 2 + 1.5;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+            petal.style.animationDuration = (Math.random() * 14 + 10) + 's';
+            petal.style.animationDelay = (Math.random() * 8) + 's';
+            snowContainer.appendChild(petal);
+        }
+    </script>
 </body>
 
 </html>
