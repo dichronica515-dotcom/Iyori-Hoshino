@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星と花のゆりかご ―― マツバ×イヨリの子育て日記 ―― | 星と花の小夜曲</title>
+    <meta name="description" content="エンジュシティのジムリーダー・マツバと、ポケモンドクター・イヨリ。二人の間に生まれたチヒロとの、穏やかで温かな日常を描いた物語シリーズ。">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --baby-gold: #fdf5e6;
+            --baby-pink: #fff0f5;
+            --baby-blue: #f0f8ff;
+        }
+
+        .series-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.2), rgba(240, 248, 255, 0.2));
+            border-bottom: 1px solid rgba(242, 192, 87, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .series-title {
+            font-size: 2.2rem;
+            color: var(--konpeito-gold);
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(242, 192, 87, 0.5);
+        }
+
+        .series-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            letter-spacing: 0.05rem;
+        }
+
+        .work-list-series {
+            display: grid;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 6rem;
+            padding: 0 1.5rem;
+        }
+
+        .series-item {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.4s;
+            text-decoration: none;
+            color: inherit;
+            align-items: center;
+            gap: 2rem;
+            border-radius: 8px;
+        }
+
+        .series-item:hover {
+            border-color: var(--konpeito-gold);
+            background: rgba(242, 192, 87, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-number {
+            font-size: 1.5rem;
+            color: var(--konpeito-gold);
+            font-family: 'Times New Roman', serif;
+            opacity: 0.6;
+        }
+
+        .story-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .story-info p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .back-nav {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .back-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: var(--konpeito-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">SPECIAL SERIES</div>
+        <h1>星と花のゆりかご</h1>
+        <div class="subtitle-japanese">― マツバ×イヨリの子育て日記 ―</div>
+        <nav class="nav-links">
+            <a href="index.html">TOP</a>
+            <a href="list.html">ARCHIVE</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="series-header">
+            <p class="series-desc">
+                古都の夜を照らす星と、その足元で咲き誇る白百合。二人の間に宿った生命、チヒロ。
+                ジムリーダーとして、ドクターとして、そして一人の親として。
+                紡がれるぬくもりの物語を、ここに集約します。
+            </p>
+        </div>
+
+        <section class="work-list-series">
+            <a href="tunagu_nukumori.html" class="series-item">
+                <div class="story-number">I</div>
+                <div class="story-info">
+                    <h3>繋いだ手のぬくもり ――パパへ</h3>
+                    <p>
+                        【一歳半/商店街の午後に】チヒロの小さな手を引いて歩くイヨリが、かつて自分を導いてくれた「パパ」の記憶を呼び覚ます。手から手へと受け継がれる三世代の愛。
+                    </p>
+                </div>
+            </a>
+            
+            <!-- 将来の作品用プレースホルダー -->
+            <div class="series-item" style="opacity: 0.5; cursor: default;">
+                <div class="story-number">II</div>
+                <div class="story-info">
+                    <h3>Coming Soon...</h3>
+                    <p>
+                        二人とチヒロの物語は、これからも続いていきます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="back-nav">
+            <a href="list.html">← ARCHIVEに戻る</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR CRADLE / STARRING MATSUBA &amp; IYORI.
+    </footer>
+</body>
+
+</html>
